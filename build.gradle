@@ -10,14 +10,25 @@ sourceCompatibility = 1.8
 //mainClassName = "org.gradle.sample.Main"
 
 repositories {
-    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     mavenCentral()
 }
 
+sourceSets {
+    main {
+        groovy {
+            srcDir "grace-app/controllers"
+        }
+    }
+}
+
 dependencies {
+    compile project(':grace')
     compile 'org.codehaus.groovy:groovy-all:2.5.1'
     compile 'io.undertow:undertow-servlet:2.0.13.Final'
     compile 'javax.servlet:javax.servlet-api:4.0.1'
+    compile 'org.slf4j:slf4j-api:1.7.22'
+    runtime 'ch.qos.logback:logback-classic:1.2.1'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
@@ -25,7 +36,7 @@ dependencies {
 
 task runApp(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    main = 'HelloRunner'
+    main = 'grace.app.Server'
     // arguments to pass to the application
     args allJvmArgs
 }
