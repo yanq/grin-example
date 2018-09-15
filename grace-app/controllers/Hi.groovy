@@ -1,4 +1,16 @@
+import grace.app.Server
+import static grace.route.Routes.*
 
-println("hello hi")
+get('/') {
+    response.writer.write("get /")
+}
 
-println(this.class)
+get('/a') {
+    response.writer.write("get /a")
+}
+
+get('/b') {
+    response.writer.write("get /b")
+}
+
+new Server().start()
