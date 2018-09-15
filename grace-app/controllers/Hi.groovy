@@ -1,5 +1,4 @@
 
 println("hello hi")
 
-s "--------------"
-g
+println(this.class)
