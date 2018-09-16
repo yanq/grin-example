@@ -1,9 +1,6 @@
 import grace.app.Server
 import static grace.route.Routes.*
 
-//todo 实现控制器前缀
-def controllerContext = '/hi'
-
 /**
  * 首页
  */
@@ -22,7 +19,7 @@ get('/a') {
 /**
  * 路径定义
  */
-get(controllerContext+'/b') {
+get('a') {
     response.writer.write("get /b")
 }
 
@@ -35,4 +32,4 @@ get(controllerContext+'/b') {
 
 //'/eeee'('sss')
 
-new Server().start()
+//new Server().start()

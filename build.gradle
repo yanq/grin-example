@@ -39,4 +39,6 @@ task runApp(type: JavaExec) {
     main = 'grace.app.Server'
     // arguments to pass to the application
     args allJvmArgs
+
+    println new File('.').absolutePath
 }
