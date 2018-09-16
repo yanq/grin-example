@@ -1,49 +1,38 @@
 import grace.app.Server
 import static grace.route.Routes.*
 
+//todo 实现控制器前缀
+def controllerContext = '/hi'
+
+/**
+ * 首页
+ */
 get('/') {
-    response.writer.write("get /")
+    response.writer.write("get /   ")
+    response.writer.write(owner.class.name)
 }
 
 /**
- *
+ * 路径定义
  */
 get('/a') {
     response.writer.write("get /a")
 }
 
 /**
- *
+ * 路径定义
  */
-get('/b') {
-    response.writer.write("get /b")
-}
-get('/b1') {
-    response.writer.write("get /b")
-}
-get('/b2') {
-    response.writer.write("get /b")
-}
-get('/b3') {
-    response.writer.write("get /b")
-}
-get('/b4') {
-    response.writer.write("get /b")
-}
-get('/b5') {
-    response.writer.write("get /b")
-}
-get('/b6') {
+get(controllerContext+'/b') {
     response.writer.write("get /b")
 }
 
+/**
+ * 另一种定义方式
+ */
 "/show" {
     println("aaaaaaa")
 }
 
-'/eeee'('sss')
-
-
-
+//'/eeee'('sss')
 
 new Server().start()
