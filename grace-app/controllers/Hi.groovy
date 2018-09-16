@@ -7,6 +7,8 @@ import static grace.route.Routes.*
 get('/') {
     response.writer.write("get /   ")
     response.writer.write(owner.class.name)
+    request.ab = 'aaa'
+    println(request.ab)
 }
 
 /**
@@ -32,4 +34,4 @@ get('a') {
 
 //'/eeee'('sss')
 
-//new Server().start()
+new Server().start()
