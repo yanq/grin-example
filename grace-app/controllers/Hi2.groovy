@@ -1,32 +1,9 @@
-import groovy.time.TimeCategory
+import groovy.json.JsonBuilder
+import groovy.json.StreamingJsonBuilder
 
-def time(Closure closure) {
-    def start = System.nanoTime()
-    closure.call()
-    return System.nanoTime() - start
-}
-100.times {
-    def nTimes = [], uTimes = []
-    10.times {
-        new Thread(new Runnable() {
-            @Override
-            void run() {
-                nTimes << time {
-                    //1+1
-                }
+StringWriter writer = new StringWriter()
+def json = new StreamingJsonBuilder(writer)
 
-                uTimes << time {
-                    use(TimeCategory) {
-                        //1+1
-                    }
-                }
-            }
-        }).start()
-    }
+json('aaa')
 
-    sleep(2000)
-
-//    println "use ${uTimes.size()} ${uTimes.sum() / uTimes.size()}"
-//    println "nouse ${nTimes.size()} ${nTimes.sum() / nTimes.size()}"
-    println("${uTimes.sum() / uTimes.size()}  ---  ${nTimes.sum() / nTimes.size()}")
-}
+println(writer.toString())

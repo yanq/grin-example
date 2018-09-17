@@ -22,5 +22,5 @@ appender("CONSOLE", ConsoleAppender) {
 //}
 
 //root(INFO, ["CONSOLE","FILE"])
-root(DEBUG, ["CONSOLE"])
+root(INFO, ["CONSOLE"])
 //logger('yan.english.dict', Level.WARN)

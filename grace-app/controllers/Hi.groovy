@@ -5,10 +5,7 @@ import static grace.route.Routes.*
  * 首页
  */
 get('/') {
-    response.writer.write("get /   ")
-    response.writer.write(owner.class.name)
-    request.ab = 'aaa'
-    println(request.ab)
+    json("dd")
 }
 
 /**
