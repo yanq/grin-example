@@ -18,7 +18,7 @@ get('/j') {
 /**
  * 路径定义
  */
-get('abdsddd') {
+get('ab') {
     response.writer.write("get /b ")
 }
 
@@ -26,7 +26,7 @@ get('abdsddd') {
  * 另一种定义方式
  */
 "/show" {
-    println("aaaaasddffdfddsgaa")
+    println("aaaaasddffdfssddsgaa")
 }
 
 //'/eeee'('sss')
