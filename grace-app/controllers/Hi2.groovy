@@ -1,9 +1,7 @@
-import groovy.json.JsonBuilder
-import groovy.json.StreamingJsonBuilder
+import yan.grace.Hello
 
-StringWriter writer = new StringWriter()
-def json = new StreamingJsonBuilder(writer)
+//GroovyScriptEngine engine = new GroovyScriptEngine("D:\\IdeaProjects\\grace-dev\\grace-web\\grace-app\\controllers")
 
-json('aaddssrfffccfdxxddddddda')
+//engine.run('yan/grace/Hello.groovy','')
 
-println(writer.toString())
+println(Hello.simpleName)
