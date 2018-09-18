@@ -12,7 +12,7 @@ get('/') {
  * 路径定义
  */
 get('/j') {
-    response.writer.write("get /a")
+    json.p()
 }
 
 /**
