@@ -9,7 +9,5 @@ class HelloWorld {
 
     public static void main(String[] args) {
         new HelloWorld().sayHi()
-
-        GraceApp.initDirs(new File('./grace-web'))
     }
 }

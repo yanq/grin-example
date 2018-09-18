@@ -1,34 +1,34 @@
-import grace.app.Server
+import grace.app.GraceServer
 import static grace.route.Routes.*
 
 /**
  * 首页
  */
 get('/') {
-    json("dd")
+    respond "Hi,Grace!"
 }
 
 /**
  * 路径定义
  */
-get('/a') {
+get('/j') {
     response.writer.write("get /a")
 }
 
 /**
  * 路径定义
  */
-get('a') {
-    response.writer.write("get /b")
+get('abdsddd') {
+    response.writer.write("get /b ")
 }
 
 /**
  * 另一种定义方式
  */
 "/show" {
-    println("aaaaaaa")
+    println("aaaaasddffdfddsgaa")
 }
 
 //'/eeee'('sss')
 
-new Server().start()
+//new GraceServer().start()
