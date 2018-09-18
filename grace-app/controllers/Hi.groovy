@@ -12,7 +12,16 @@ get('/') {
  * 路径定义
  */
 get('/j') {
-    json.p()
+    def json = getJson()
+    json.p([s: 'b'])
+    json('sss')
+    json(this)
+    json(1, 2, 3)
+    json([1, 2, 3]) {
+        a it
+    }
+    json([a: 5])
+    json.person(name: "Tim", age: 35) { town "Manchester" }
 }
 
 /**
