@@ -5,7 +5,9 @@ import static grace.route.Routes.*
  * 首页
  */
 get('/') {
-    respond "Hi,Grace!"
+    respond "Hi,Gracecfv !"
+
+    new HelloWorld().sayHi()
 }
 
 /**
