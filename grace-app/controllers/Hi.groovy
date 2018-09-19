@@ -4,9 +4,7 @@ import static grace.route.Routes.get
  * 首页
  */
 get('/') {
-    respond "Hi,Gracecfv !"
-
-    new HelloWorld().sayHi()
+    respond "Hi,Grace !"
 }
 
 /**
@@ -36,9 +34,14 @@ get('ab') {
  * 另一种定义方式
  */
 "/show" {
-    println("aaaaasddffddfssddsgaa")
+    println("aaaaasddfsdfddfssddsgaa")
 }
 
-//'/eeee'('sss')
+/**
+ * 测试模板
+ */
+get('/r'){
+    render 'h',[name:'Grace!']
+}
 
 //new GraceServer().start()
