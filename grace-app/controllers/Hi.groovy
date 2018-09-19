@@ -1,5 +1,4 @@
-import grace.app.GraceServer
-import static grace.route.Routes.*
+import static grace.route.Routes.get
 
 /**
  * 首页
@@ -15,7 +14,7 @@ get('/') {
  */
 get('/j') {
     def json = getJson()
-    json.p([s: 'b'])
+    json.p([s: 'bc'])
     json('sss')
     json(this)
     json(1, 2, 3)
