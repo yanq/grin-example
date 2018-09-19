@@ -4,7 +4,7 @@ import static grace.route.Routes.get
  * 首页
  */
 get('/') {
-    respond "Hi,Grace !"
+    render "你好,Grace !"
 }
 
 /**
