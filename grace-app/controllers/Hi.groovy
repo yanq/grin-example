@@ -26,10 +26,17 @@ get('/j') {
 }
 
 /**
- * 路径定义
+ * 路径相对定义
  */
 get('ab') {
     response.writer.write("get /b ")
+}
+
+/**
+ * 带参数路径
+ */
+get('/p/@name'){
+    render "params :${params}"
 }
 
 /**

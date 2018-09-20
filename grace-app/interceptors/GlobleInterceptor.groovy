@@ -1,5 +1,5 @@
 import static grace.route.Routes.before
 
-before('**') {
+before('/**') {
     log.info("request : $request.requestURI")
 }

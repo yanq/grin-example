@@ -25,11 +25,15 @@ import yan.grace.Hello
 
 //println "/@a/@b/@c?".findAll(/@\w*/)
 
-Route route = new Route(path: '/@b')
-println route.matches("/a")
-println route.getPathParams('/a')
+//Route route = new Route(path: '/@b')
+//println route.matches("/a")
+//println route.getPathParams('/a')
+//
+//println RegexUtil.clearRequestURI('/a')
+//println RegexUtil.clearRequestURI('/a?c=v')
+//println RegexUtil.clearRequestURI('/a;sss')
+//println RegexUtil.clearRequestURI('/a#ha')
 
-println RegexUtil.clearRequestURI('/a')
-println RegexUtil.clearRequestURI('/a?c=v')
-println RegexUtil.clearRequestURI('/a;sss')
-println RegexUtil.clearRequestURI('/a#ha')
+println([:])
+println(![:])
+println(!![:])
