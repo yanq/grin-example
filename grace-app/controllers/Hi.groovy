@@ -1,3 +1,5 @@
+import grace.route.Routes
+
 import static grace.route.Routes.after
 import static grace.route.Routes.before
 import static grace.route.Routes.get
@@ -6,6 +8,12 @@ import static grace.route.Routes.get
  * 首页
  */
 get('/') {
+    html.p("Hi,Grace!")
+
+    html.p "${Routes.routes*.path}"
+    html.p "${Routes.beforeInterceptors*.path}"
+    html.p "${Routes.afterInterceptors*.path}"
+
     render "你好,Grace !"
 }
 

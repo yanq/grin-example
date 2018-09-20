@@ -34,6 +34,9 @@ import yan.grace.Hello
 //println RegexUtil.clearRequestURI('/a;sss')
 //println RegexUtil.clearRequestURI('/a#ha')
 
-println([:])
-println(![:])
-println(!![:])
+//println([:])
+//println(![:])
+//println(!![:])
+
+def l = ['/**','/a/dd','/@a','/*','/b','/x/a','/ax'].sort{ it.replaceAll('\\*','zz').replaceAll('@','z')}
+println(l)
