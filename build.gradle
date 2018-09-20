@@ -18,6 +18,8 @@ sourceSets {
     main {
         groovy {
             srcDir "grace-app/controllers"
+            srcDir "grace-app/interceptors"
+            srcDir "grace-app/views"
         }
     }
 }

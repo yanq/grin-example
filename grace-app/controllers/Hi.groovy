@@ -1,3 +1,5 @@
+import static grace.route.Routes.after
+import static grace.route.Routes.before
 import static grace.route.Routes.get
 
 /**
@@ -42,6 +44,14 @@ get('ab') {
  */
 get('/r'){
     render 'h',[name:'Grace!']
+}
+
+before {
+    request.beforeAt = System.nanoTime()
+    log.info("before interceptor")
+}
+after {
+    log.info("after interceptor,${(System.nanoTime()-request.beforeAt)/1000000} ms")
 }
 
 //new GraceServer().start()
