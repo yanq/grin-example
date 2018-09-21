@@ -48,19 +48,13 @@ get('/p/@name'){
 }
 
 /**
- * 另一种定义方式
- */
-"/show" {
-    println("aaaaasddfsdfddfssddsgaa")
-}
-
-/**
  * 测试模板
  */
 get('/r'){
     render 'h',[name:'Grace!']
 }
 
+//拦截器
 before {
     request.beforeAt = System.nanoTime()
     log.info("before interceptor")
