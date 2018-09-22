@@ -40,23 +40,14 @@ dependencies {
 }
 
 
-task runApp(type: JavaExec) {
+task graceRun(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-
-    classpath.each {
-        //println it.absolutePath
-    }
-
-    println buildDir
-
-    main = 'Application'
-    // arguments to pass to the application
-    args allJvmArgs
-
-    println new File('.').absolutePath
+    main = 'grace.app.GraceServer'
+    args projectDir.absolutePath //设置项目路径
 }
 
-task grace(type: Copy) {
+task gracePrepare(type: Copy) {
+    dependsOn classes
     into "$buildDir/grace"
     from sourceSets.main.runtimeClasspath
 }
