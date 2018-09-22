@@ -40,14 +40,16 @@ dependencies {
 }
 
 
-task graceRun(type: JavaExec) {
+task run(type: JavaExec) {
+    group 'grace'
     classpath = sourceSets.main.runtimeClasspath
     main = 'grace.app.GraceServer'
     args projectDir.absolutePath //设置项目路径
 }
 
-task gracePrepare(type: Copy) {
+task preDeploy(type: Copy) {
     dependsOn classes
+    group 'grace'
     into "$buildDir/grace"
     from sourceSets.main.runtimeClasspath
 }
