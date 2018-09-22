@@ -1,42 +1,26 @@
-import grace.route.Route
-import grace.util.RegexUtil
-import yan.grace.Hello
+def text = '''\
+            Dear <% out << firstname %> ${lastname},
+            
+            We <% if (accepted) out.print 'are pleased' else out.print 'regret' %> \
+            to inform you that your paper entitled
+            '$title' was ${ accepted ? 'accepted' : 'rejected' }.
+            
+            The conference committee.'''
 
-//GroovyScriptEngine engine = new GroovyScriptEngine("D:\\IdeaProjects\\grace-dev\\grace-web\\grace-app\\controllers")
 
-//engine.run('yan/grace/Hello.groovy','')
 
-//println(Hello.simpleName)
+def binding = [
+        firstname: "Grace",
+        lastname : "Hopper",
+        accepted : true,
+        title    : 'Groovy for COBOL programmers'
+]
+String response
 
-//[1,2,3,4].each {
-//    if (it>2) return
-//    println(it)
-//}
+TimeUtil.time {
+    def template = new groovy.text.StreamingTemplateEngine().createTemplate(text)
+//    def template = new groovy.text.GStringTemplateEngine().createTemplate(text)
+    response = template.make(binding)
+}
 
-//println({}()==false)
-//println({println('------------')}()==false)
-//println({'------------'}()==false)
-//println({return true}()==false)
-//println({return false}()==false)
-
-//println "/a/@name".findAll(/@\w*/)
-//println "/a".findAll(/@\w*/)
-//println ![]
-
-//println "/@a/@b/@c?".findAll(/@\w*/)
-
-//Route route = new Route(path: '/@b')
-//println route.matches("/a")
-//println route.getPathParams('/a')
-//
-//println RegexUtil.clearRequestURI('/a')
-//println RegexUtil.clearRequestURI('/a?c=v')
-//println RegexUtil.clearRequestURI('/a;sss')
-//println RegexUtil.clearRequestURI('/a#ha')
-
-//println([:])
-//println(![:])
-//println(!![:])
-
-def l = ['/**','/a/dd','/@a','/*','/b','/x/a','/ax'].sort{ it.replaceAll('\\*','zz').replaceAll('@','z')}
-println(l)
+println response
