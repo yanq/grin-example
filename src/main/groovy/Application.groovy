@@ -7,6 +7,6 @@ class Application {
         new GraceServer().startApp(new File('grace-web'))
         //new GraceServer().startApp()
 //        GraceApp.setRoot(new File('grace-web'))
-//        Generator.controller("a.b.HiT")
+//        Generator.controller("HiT2")
     }
 }

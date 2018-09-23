@@ -21,6 +21,9 @@ sourceSets {
             srcDir "grace-app/interceptors"
             srcDir "grace-app/views"
         }
+        resources {
+            srcDir  "grace-app/conf"
+        }
     }
 }
 
