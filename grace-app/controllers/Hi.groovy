@@ -1,3 +1,4 @@
+import grace.app.GraceApp
 import grace.route.Routes
 
 import static grace.route.Routes.after
@@ -8,11 +9,7 @@ import static grace.route.Routes.get
  * 首页
  */
 get('/') {
-    html.p("Hi,Grace!")
-
-    html.p "${Routes.routes*.path}"
-    html.p "${Routes.beforeInterceptors*.path}"
-    html.p "${Routes.afterInterceptors*.path}"
+    html.p GraceApp.instance.dataSource.properties
 
     render "你好,Grace !"
 }
@@ -43,15 +40,15 @@ get('ab') {
 /**
  * 带参数路径
  */
-get('/p/@name'){
+get('/p/@name') {
     render "params :${params}"
 }
 
 /**
  * 测试模板
  */
-get('/r'){
-    render 'h',[name:'Grace!']
+get('/r') {
+    render 'h', [name: 'Grace!']
 }
 
 //拦截器
@@ -60,7 +57,7 @@ before {
     log.info("before interceptor")
 }
 after {
-    log.info("after interceptor,${(System.nanoTime()-request.beforeAt)/1000000} ms")
+    log.info("after interceptor,${(System.nanoTime() - request.beforeAt) / 1000000} ms")
 }
 
 //new GraceServer().start()

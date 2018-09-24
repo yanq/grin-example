@@ -6,13 +6,16 @@ server.port = 8008
 server.context = '/'
 
 //environments
-environments{
-    dev{
-        server.port = 8009
-        server.context = '/grace'
-        name = "Grace Dev"
+environments {
+    dev {
+        dataSource {
+            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            driverClassName = "org.h2.Driver"
+            username = "sa"
+            password = ''
+        }
     }
-    prod{
+    prod {
         name = "Grace Prod"
     }
 }
