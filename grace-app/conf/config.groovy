@@ -13,6 +13,8 @@ environments {
             driverClassName = "org.h2.Driver"
             username = "sa"
             password = ''
+            validationQuery = 'select 1'
+            useGlobalDataSourceStat = true
         }
     }
     prod {
