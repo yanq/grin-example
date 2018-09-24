@@ -23,7 +23,7 @@ sourceSets {
             srcDir "grace-app/init"
         }
         resources {
-            srcDir  "grace-app/conf"
+            srcDir "grace-app/conf"
         }
     }
 }
@@ -32,12 +32,14 @@ dependencies {
     compile project(':grace')
     compile 'org.codehaus.groovy:groovy-all:2.5.1'
     compile 'io.undertow:undertow-servlet:2.0.13.Final'
-    compile 'javax.servlet:javax.servlet-api:4.0.1'
-    compile 'org.slf4j:slf4j-api:1.7.22'
-
-    compile 'com.github.jknack:handlebars:4.1.0'
     compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
+    compile "org.grails:grails-datastore-gorm-hibernate5:6.1.9.RELEASE"
+    
+    runtime "com.h2database:h2:1.4.192"
+    runtime "org.apache.tomcat:tomcat-jdbc:8.5.0"
+    runtime "org.apache.tomcat.embed:tomcat-embed-logging-log4j:8.5.0"
 
+    runtime 'org.slf4j:slf4j-api:1.7.22'
     runtime 'ch.qos.logback:logback-classic:1.2.1'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
