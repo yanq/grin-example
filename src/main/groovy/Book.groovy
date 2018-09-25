@@ -6,11 +6,12 @@ import org.grails.datastore.gorm.GormEntity
 /**
  * book
  */
-@ToString
+@ToString(includeNames=true)
 class Book implements Entity<Book> {
+    String name
     String title
     Date publishAt
-    static Map mapping = [table: 'book']
+    static mapping = [table: 'book',columns:[name:'title']]
 
     def config = {
 

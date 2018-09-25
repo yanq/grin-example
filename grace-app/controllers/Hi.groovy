@@ -11,6 +11,7 @@ import static grace.route.Routes.get
 get('/') {
     def book = Book.get(1)
     println(book)
+    println(Book.declaredFields*.name)
     render "你好,Grace !"
 }
 
