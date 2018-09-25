@@ -9,7 +9,7 @@ import static grace.route.Routes.get
  * 首页
  */
 get('/') {
-    Book.sql.execute("create table a")
+    Book.newSql().execute("create table a")
 
     render "你好,Grace !"
 }
