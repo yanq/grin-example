@@ -1,4 +1,5 @@
 import grace.app.GraceApp
+import grace.datastore.DB
 import grace.route.Routes
 
 import static grace.route.Routes.after
@@ -9,10 +10,10 @@ import static grace.route.Routes.get
  * 首页
  */
 get('/') {
-    def book = Book.get(1)
-    println(Book['mapping'])
+    Book book = Book.get(1)
     println(book)
-    println(Book.declaredFields*.name)
+    book.title = "Hi,GraceORM!"
+    book.save()
     render "你好,Grace !"
 }
 

@@ -10,7 +10,9 @@ import org.grails.datastore.gorm.GormEntity
 class Book implements Entity<Book> {
     String name
     String title
-    Date publishAt
+    Date publishAt = new Date()
+
+    static transients = ['config']
     static mapping = [table: 'book',columns:[name:'title']]
 
     def config = {
