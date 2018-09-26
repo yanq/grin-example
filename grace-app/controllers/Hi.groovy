@@ -1,19 +1,20 @@
-import grace.app.GraceApp
-import grace.datastore.DB
-import grace.route.Routes
+import groovy.sql.Sql
 
-import static grace.route.Routes.after
-import static grace.route.Routes.before
-import static grace.route.Routes.get
+import java.util.logging.Level
+import java.util.logging.LogManager
+import java.util.logging.Logger
+
+import static grace.route.Routes.*
 
 /**
  * 首页
  */
 get('/') {
+
     Book book = Book.get(1)
     println(book)
     book.title = "Hi,GraceORM!"
-    book.save()
+    //book.save()
     render "你好,Grace !"
 }
 

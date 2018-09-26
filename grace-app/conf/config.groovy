@@ -16,6 +16,7 @@ environments {
             validationQuery = 'select 1'
             useGlobalDataSourceStat = true
         }
+        logSql = true
     }
     prod {
         name = "Grace Prod"

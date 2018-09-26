@@ -23,4 +23,4 @@ appender("CONSOLE", ConsoleAppender) {
 
 //root(INFO, ["CONSOLE","FILE"])
 root(INFO, ["CONSOLE"])
-//logger('yan.english.dict', Level.WARN)
+logger('druid.sql', Level.ALL)
