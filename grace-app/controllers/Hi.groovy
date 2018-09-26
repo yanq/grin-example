@@ -14,7 +14,9 @@ get('/') {
     Book book = Book.get(1)
     println(book)
     book.title = "Hi,GraceORM!"
-    //book.save()
+    book.save()
+    Book book1 = new Book(title: "New Book")
+    book1.save()
     render "你好,Grace !"
 }
 

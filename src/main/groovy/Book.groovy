@@ -8,6 +8,7 @@ import org.grails.datastore.gorm.GormEntity
  */
 @ToString(includeNames=true)
 class Book implements Entity<Book> {
+    long id
     String name
     String title
     Date publishAt = new Date()
