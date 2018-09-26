@@ -13,6 +13,8 @@ environments {
             driverClassName = "com.mysql.jdbc.Driver"
             username = "root"
             password = 'mysql'
+            initialSize = 5
+            minIdle = 5
             validationQuery = 'select 1'
             useGlobalDataSourceStat = true
         }
