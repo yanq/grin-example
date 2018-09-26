@@ -10,9 +10,9 @@ import static grace.route.Routes.*
  * 首页
  */
 get('/') {
-    def list = Book.list([offset: 0, max: 5])
+    def list = Book.list()
     println(list*.id)
-    list = Book.list([offset: 5, max: 5])
+    list = Book.list([offset: 10, max: 5])
     println(list*.id)
     render "你好,Grace !"
 }
