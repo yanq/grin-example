@@ -10,13 +10,8 @@ import static grace.route.Routes.*
  * 首页
  */
 get('/') {
-
-//    Book book = Book.get(1)
-//    println(book)
-//    book.title = "Hi,GraceORM!"
-//    book.save()
-    Book book1 = new Book(title: "New Book")
-    book1.save()
+    def list = Book.list()
+//    println(list)
     render "你好,Grace !"
 }
 
