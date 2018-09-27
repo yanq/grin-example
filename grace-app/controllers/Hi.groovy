@@ -10,10 +10,8 @@ import static grace.route.Routes.*
  * 首页
  */
 get('/') {
-    println(Book.count())
-    Book book = Book.get(1)
-    println(book?.delete())
-    println(Book.count())
+    int count = Book.where('name is not null').count()
+    println(count)
     render "你好,Grace!"
 }
 
