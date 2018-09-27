@@ -10,11 +10,11 @@ import static grace.route.Routes.*
  * 首页
  */
 get('/') {
-    def list = Book.list()
-    println(list*.id)
-    list = Book.list([offset: 10, max: 5])
-    println(list*.id)
-    render "你好,Grace !"
+    println(Book.count())
+    Book book = Book.get(1)
+    println(book?.delete())
+    println(Book.count())
+    render "你好,Grace!"
 }
 
 /**
