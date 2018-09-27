@@ -12,6 +12,8 @@ import static grace.route.Routes.*
 get('/') {
     int count = Book.where('name is not null').count()
     println(count)
+    Book book = Book.where('id=100').get()
+    List books = Book.where('id > 200').list([max: 3])
     render "你好,Grace!"
 }
 
