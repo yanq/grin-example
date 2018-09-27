@@ -14,6 +14,7 @@ get('/') {
     println(count)
     Book book = Book.where('id=100').get()
     List books = Book.where('id > 200').list([max: 3])
+    List books1 = Book.where('id > 200').list()
     render "你好,Grace!"
 }
 
