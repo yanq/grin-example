@@ -1,10 +1,21 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.0.5"
+    }
+}
+
+apply plugin: "com.bertramlabs.asset-pipeline"
+apply plugin: 'java'
+apply plugin: 'groovy'
+//apply plugin: 'application'
+
 group 'xyz.itbang'
 version '0.1'
-
-apply plugin: 'groovy'
-apply plugin: 'java'
-apply plugin: 'war'
-//apply plugin: 'application'
 
 sourceCompatibility = 1.8
 //mainClassName = "org.gradle.sample.Main"
@@ -55,8 +66,15 @@ task run(type: JavaExec) {
 }
 
 task preDeploy(type: Copy) {
-    dependsOn classes
+    dependsOn classes,assetCompile
     group 'grace'
     into "$buildDir/grace"
     from sourceSets.main.runtimeClasspath
+}
+
+assets {
+    assetsPath = "grace-app/assets"
+    // includes = []
+    // excludes = ['**/*.less'] //Example Exclude GLOB pattern
+    // from '/vendor/lib'
 }
