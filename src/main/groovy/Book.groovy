@@ -1,10 +1,5 @@
-import grace.datastore.DBUtil
 import grace.datastore.Entity
-import grace.datastore.EntityApiImpl
 import groovy.transform.ToString
-import org.grails.datastore.gorm.GormEntity
-
-import java.lang.reflect.Modifier
 
 /**
  * book
@@ -16,14 +11,17 @@ class Book implements Entity<Book> {
     String title
     Date publishAt = new Date()
 
-    // static transients = ['config']
+    static transients = ['config']
     static mapping = [table: 'book', columns: [name: 'title']]
     static constraints = {
-        title blank: true, size: 1..5 comment '字符串长度要处于 1 到 5 之间'
+        title nullable: true, blank: true, size: 1..5 comment '字符串长度要处于 1 到 5 之间'
     }
 
     public static void main(String[] args) {
-       println(Book.constraintMap)
+        Book book = new Book()
+        book.title = '1'
+        println book.validate()
+        println book.errors
     }
 }
 

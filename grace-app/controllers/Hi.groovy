@@ -1,9 +1,3 @@
-import groovy.sql.Sql
-
-import java.util.logging.Level
-import java.util.logging.LogManager
-import java.util.logging.Logger
-
 import static grace.route.Routes.*
 
 /**
@@ -14,14 +8,13 @@ get('/') {
     println(count)
 //    Book book = Book.where('id=100').get()
     List books = Book.where('id > 200').list([limit: 3,offset: 5,order:'id desc'])
-    render "你好,Grace!"
+    render "你好,Grace !"
 }
 
 /**
  * 路径定义
  */
 get('/j') {
-    def json = getJson()
     json.p([s: 'bc'])
     json('sss')
     json(this)
