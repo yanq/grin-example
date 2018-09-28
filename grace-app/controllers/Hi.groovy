@@ -1,4 +1,4 @@
-import static grace.route.Routes.*
+import static grace.controller.route.Routes.*
 
 /**
  * 首页
