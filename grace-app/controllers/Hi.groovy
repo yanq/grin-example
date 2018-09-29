@@ -48,6 +48,11 @@ get('/r') {
     render 'h', [name: 'Grace!']
 }
 
+get('/f/@file'){
+    println("$params")
+    render new File("D:\\temp\\command\\image1024.jpg")
+}
+
 //拦截器
 before {
     request.beforeAt = System.nanoTime()
