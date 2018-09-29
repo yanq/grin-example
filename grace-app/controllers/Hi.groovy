@@ -49,14 +49,14 @@ get('/r') {
 }
 
 get('/assets/@file'){
-    println("$params")
+    // println("$params")
     asset()
 }
 
 //拦截器
 before {
     request.beforeAt = System.nanoTime()
-    log.info("before interceptor")
+    log.info("before interceptor ")
 }
 after {
     log.info("after interceptor,${(System.nanoTime() - request.beforeAt) / 1000000} ms")
