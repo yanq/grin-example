@@ -7,6 +7,8 @@ import static grace.controller.route.Routes.*
  */
 get('/') {
     render g.assetJs('application.js')
+    render g.assetCss('application.css')
+
     render "你好,Grace !"
 }
 
