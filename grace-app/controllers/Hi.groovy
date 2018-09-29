@@ -48,9 +48,9 @@ get('/r') {
     render 'h', [name: 'Grace!']
 }
 
-get('/f/@file'){
+get('/assets/@file'){
     println("$params")
-    render new File("D:\\temp\\command\\image1024.jpg")
+    asset()
 }
 
 //拦截器
