@@ -15,6 +15,8 @@ environments {
             password = 'mysql'
             initialSize = 5
             minIdle = 5
+            maxWait = 5000
+            //maxWaitThreadCount = 3 这是干嘛用的？
             validationQuery = 'select 1'
             useGlobalDataSourceStat = true
         }

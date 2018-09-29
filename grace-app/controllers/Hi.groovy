@@ -1,13 +1,12 @@
+import grace.controller.request.GraceEx
+
 import static grace.controller.route.Routes.*
 
 /**
  * 首页
  */
 get('/') {
-    int count = Book.where('name is not null').count()
-    println(count)
-//    Book book = Book.where('id=100').get()
-    List books = Book.where('id > 200').list([limit: 3,offset: 5,order:'id desc'])
+    render g.assetJs('application.js')
     render "你好,Grace !"
 }
 
