@@ -1,13 +1,13 @@
-import grace.controller.request.GraceEx
-
+import yan.practise.Book
 import static grace.controller.route.Routes.*
 
 /**
  * 首页
  */
 get('/') {
-    render g.assetJs('application.js')
-    render g.assetCss('application.css')
+
+    Book book = Book.get(2)
+    render(book)
 
     render "你好,Grace !"
 }

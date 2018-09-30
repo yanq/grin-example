@@ -1,10 +1,12 @@
+package yan.practise
+
 import grace.datastore.entity.Entity
 import groovy.transform.ToString
 
 /**
  * book
  */
-@ToString(includeNames = true)
+@ToString(includeNames = true,excludes = ['errors'])
 class Book implements Entity<Book> {
     long id
     String name
