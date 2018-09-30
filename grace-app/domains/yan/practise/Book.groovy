@@ -6,7 +6,7 @@ import groovy.transform.ToString
 /**
  * book
  */
-@ToString(includeNames = true,excludes = ['errors'])
+@ToString(includeNames = true, excludes = ['errors'])
 class Book implements Entity<Book> {
     long id
     String name
