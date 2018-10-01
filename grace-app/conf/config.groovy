@@ -2,7 +2,7 @@
 
 //server
 server.host = 'localhost'
-server.port = 8008
+server.port = 8080
 server.context = '/'
 
 //environments
