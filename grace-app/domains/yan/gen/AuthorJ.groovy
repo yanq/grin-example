@@ -1,11 +1,11 @@
-package ${grace.util.ClassUtil.packageName(className)}
+package yan.gen
 
 import grace.datastore.entity.Entity
 
 /**
- * ${grace.util.ClassUtil.simpleName(className)}
+ * AuthorJ
  */
-class ${grace.util.ClassUtil.simpleName(className)} implements Entity<Book> {
+class AuthorJ implements Entity<Book> {
     long id
     String title
     Date publishAt = new Date()

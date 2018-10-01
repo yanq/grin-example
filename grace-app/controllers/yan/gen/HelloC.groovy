@@ -1,7 +1,7 @@
 import static grace.controller.route.Routes.*
 
 /**
- * ${grace.util.ClassUtil.simpleName(className)}
+ * HelloC
  * something about this controller
  */
 
