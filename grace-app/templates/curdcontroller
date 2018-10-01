@@ -1,0 +1,41 @@
+<%
+def packageName = grace.util.ClassUtil.packageName(entityClass)
+def simpleName = grace.util.ClassUtil.simpleName(entityClass)
+def propertyName = grace.util.ClassUtil.propertyName(entityClass)
+%>
+${ packageName ? "package " + packageName : '' }
+
+import static grace.controller.route.Routes.*
+
+/**
+ * ${grace.util.ClassUtil.simpleName(entityClass)}
+ * something about this controller
+ */
+
+get('index') {
+
+}
+
+get('show') {
+
+}
+
+get('create') {
+
+}
+
+post('save') {
+
+}
+
+get('edit') {
+
+}
+
+post('update') {
+
+}
+
+post('delete') {
+
+}
