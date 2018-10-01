@@ -66,8 +66,8 @@ task run(type: JavaExec) {
     args projectDir.absolutePath //设置项目路径
 }
 
-task preDeploy(type: Copy) {
-    dependsOn classes,assetCompile
+task prepare(type: Copy) {
+    // dependsOn classes,assetCompile
     group 'grace'
     into "$buildDir/grace"
     from sourceSets.main.runtimeClasspath
