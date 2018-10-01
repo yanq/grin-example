@@ -1,3 +1,4 @@
+${grace.util.ClassUtil.packageName(className) ? "package "+grace.util.ClassUtil.packageName(className) : ''}
 import static grace.controller.route.Routes.*
 
 /**

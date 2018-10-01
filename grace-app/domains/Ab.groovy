@@ -1,10 +1,11 @@
-${grace.util.ClassUtil.packageName(className) ? "package "+grace.util.ClassUtil.packageName(className) : ''}
+package Ab
+
 import grace.datastore.entity.Entity
 
 /**
- * ${grace.util.ClassUtil.simpleName(className)}
+ * Ab
  */
-class ${grace.util.ClassUtil.simpleName(className)} implements Entity< ${grace.util.ClassUtil.simpleName(className)} > {
+class Ab implements Entity<Ab> {
     long id
     String title
     Date publishAt = new Date()
