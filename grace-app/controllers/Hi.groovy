@@ -17,7 +17,7 @@ get('/') {
  * 路径定义
  */
 get('/j') {
-    json.p([s: 'bc'])
+    json.p([s: 'bcsdsfefsessssdssa'])
     json('sss')
     json(this)
     json(1, 2, 3)

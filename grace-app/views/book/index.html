@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
     <head>
-
+        <title>Page Title</title>
     </head>
     <body>
-       <p>hhhhhhhhh</p>
+        <h1 th:text="${name.class}">Welcome to our grocery store!</h1>
+        <h1 class="h2" th:text="${session.id}">Welcome to our grocery store!</h1>
+
+        <section>
+            <p>Page content</p>
+            <div>Included age</div>
+        </section>
     </body>
 </html>
