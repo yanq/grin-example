@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html th:fragment="layout (title, content)" xmlns:th="http://www.thymeleaf.org">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title th:replace="${title}">Layout Title</title>
+        [(${g.assetJs('application.js')})]
+        [(${g.assetCss('application.css')})]
     </head>
     <body>
         <h1 th:text="${name}">Hi</h1>
-        <div th:replace="${content}">
+        <div th:include="${content}">
             <p>Layout content</p>
         </div>
         <footer>
