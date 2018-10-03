@@ -46,7 +46,7 @@ get('/p/@name') {
  * 测试模板
  */
 get('/r') {
-    render 'h', [name: 'Grace!']
+    render 'index', [name: 'Grace !']
 }
 
 get('/assets/@file'){
