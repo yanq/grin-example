@@ -9,7 +9,11 @@ import static grace.controller.route.Routes.*
 
 // list page
 get('index') {
-    render('index', [name:'Mesdsd'])
+    params.limit = params.limit ?: 10
+    def list = Book.list(params)
+    def count = Book.count()
+
+    render('index', [list: list, count: count])
 }
 
 get('show') {

@@ -4,12 +4,11 @@
         <title>Page Title</title>
     </head>
     <body>
-        <h1 th:text="${name.class}">Welcome to our grocery store!</h1>
-        <h1 class="h2" th:text="${session.id}">Welcome to our grocery store!</h1>
-
-        <section>
-            <p>Page content</p>
-            <div>Included age</div>
-        </section>
+        <h1>Welcome to our grocery store!</h1>
+        <div th:each="prod:${list}">
+            <div th:text="${prod.id}">Onions</div>
+            <div th:text="${prod.name}">2.41</div>
+            <div th:text="${prod.title}">2.41</div>
+        </div>
     </body>
 </html>
