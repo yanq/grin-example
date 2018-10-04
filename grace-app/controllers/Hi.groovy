@@ -6,11 +6,7 @@ import static grace.controller.route.Routes.*
  * 首页
  */
 get('/') {
-
-    Book book = Book.get(2)
-    render(book)
-
-    render "你好,Grace !"
+    render('/index',[:])
 }
 
 /**
