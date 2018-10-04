@@ -49,7 +49,10 @@ get('/r') {
     render 'index', [name: 'Grace !']
 }
 
-assets('/assets')
+/**
+ * asset
+ */
+assets('/asset')
 
 //拦截器
 before {
