@@ -49,10 +49,7 @@ get('/r') {
     render 'index', [name: 'Grace !']
 }
 
-get('/assets/@file'){
-    // println("$params")
-    asset()
-}
+assets('/assets')
 
 //拦截器
 before {
