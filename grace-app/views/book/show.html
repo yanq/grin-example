@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
+    <head>
+        <title>List</title>
+    </head>
+    <body>
+        <h1>Book</h1>
+        <p th:each="prop:${book.props}">
+            <span th:text="${prop}">PropertyName</span> : <span th:text="${book[prop]}">PropertyValue</span>
+        </p>
+    </body>
+</html>

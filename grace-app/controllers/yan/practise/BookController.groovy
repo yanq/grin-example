@@ -16,8 +16,15 @@ get('index') {
     render('index', [list: list, count: count])
 }
 
-get('show') {
+get('show/@id') {
+    Book book = Book.get(params.id)
 
+    if (!book) {
+        notFound()
+        return
+    }
+
+    render('show',[book:book])
 }
 
 get('create') {

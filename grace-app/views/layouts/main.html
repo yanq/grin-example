@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html th:fragment="layout (title, content)" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title th:text="|${title} Grace|">Layout Title</title>
         [(${g.assetJs('application.js')})]
         [(${g.assetCss('application.css')})]
@@ -51,7 +52,7 @@
             <div class="container" th:include="${content}"></div>
         </main>
 
-        <footer class="bg-light fixed-bottom text-muted">
+        <footer class="bg-light text-muted">
             <div class="container">
                 <p class="float-right">
                     <a href="#">Back to top</a>
