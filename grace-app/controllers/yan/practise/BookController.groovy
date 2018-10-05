@@ -28,7 +28,7 @@ get('show/@id') {
 }
 
 get('create') {
-
+    render('create',[:])
 }
 
 post('save') {

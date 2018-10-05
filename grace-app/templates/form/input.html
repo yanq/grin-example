@@ -1,0 +1,5 @@
+<div class="form-group">
+    <label for="${propName}">${propName}</label>
+    <input type="${propType}" value="<%= '${'+grace.util.ClassUtil.propertyName(entityClass)+'.'+propName+'}' %>" class="form-control" id="${propName}" aria-describedby="${propName}Help" placeholder="Enter ${propName}">
+    <small id="${propName}Help" class="form-text text-muted">${constraints?.comment ?: ''}</small>
+</div>
