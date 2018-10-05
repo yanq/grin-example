@@ -1,9 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
     <head>
-
+        <title>List</title>
     </head>
     <body>
-       <p>hhhhhhhhh</p>
+        <h1>List</h1>
+        <table class="table table-bordered">
+            <tr>
+                <%
+                entityClass.props.each {
+                    out << " <th>${it}</th>\n "
+                }
+                %>
+            </tr>
+            <tr th:each="prod:\${list}">
+                <%
+                int i = 0
+                entityClass.props.each {
+                    def p = "${grace.util.ClassUtil.propertyName(entityClass)}.${it}"
+                    if (i == 0) {
+                        out << "<td><a href=\"#\" th:text=\"\${${p}}\" th:href=\"|show/\${${p}}|\">PropertyValue</a></td> \n"
+                    } else {
+                        out << " <td th:text=\"\${${p}}\">PropertyValue</td> \n "
+                    }
+                    i++
+                }
+                %>
+            </tr>
+        </table>
     </body>
 </html>
