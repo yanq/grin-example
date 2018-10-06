@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
+    <head>
+        <title>${book}</title>
+    </head>
+
+    <body>
+        <h1>Book</h1>
+        <p><span>id</span> : <span th:text="${book.id}">PropertyValue</span></p>
+<p><span>title</span> : <span th:text="${book.title}">PropertyValue</span></p>
+<p><span>type</span> : <span th:text="${book.type}">PropertyValue</span></p>
+<p><span>publishAt</span> : <span th:text="${book.publishAt}">PropertyValue</span></p>
+
+    </body>
+</html>

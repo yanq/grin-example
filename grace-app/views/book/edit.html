@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>create book</title>
+    </head>
+
+    <body>
+        <h1>create book</h1>
+
+        <form>
+            <input type="hidden" name="id" value="${book.id}">
+            <div class="form-group">
+    <label for="title">title</label>
+    <input type="text" value="${book.title}" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title">
+    <small id="titleHelp" class="form-text text-muted">字符串长度要处于 1 到 5 之间</small>
+</div><div class="form-group">
+    <label for="type">type select</label>
+    <select class="form-control" id="type">
+        <option value='语文' ${book.type=='语文' ? 'selected' : ''}>语文</option>  <option value='数学' ${book.type=='数学' ? 'selected' : ''}>数学</option>  
+    </select>
+</div><div class="form-group">
+    <label for="publishAt">publishAt</label>
+    <input type="datetime" value="${book.publishAt}" class="form-control" id="publishAt" aria-describedby="publishAtHelp" placeholder="Enter publishAt">
+    <small id="publishAtHelp" class="form-text text-muted"></small>
+</div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </body>
+</html>

@@ -14,11 +14,11 @@
                     }
                 %>
             </tr>
-            <tr th:each="prod:\${list}">
+            <tr th:each="${entityName}:\${list}">
                 <%
                     int i = 0
                     entityClass.props.each {
-                        def p = "${grace.util.ClassUtil.propertyName(entityClass)}.${it}"
+                        def p = "${entityName}.${it}"
                         if (i == 0) {
                             out << "<td><a href=\"#\" th:text=\"\${${p}}\" th:href=\"|show/\${${p}}|\">PropertyValue</a></td> \n"
                         } else {

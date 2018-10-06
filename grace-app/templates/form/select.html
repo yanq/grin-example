@@ -1,10 +1,10 @@
 <div class="form-group">
     <label for="${propName}">${propName} select</label>
-    <select class="form-control" id="${propName}">
+    <select class="form-control" name="${propName}" id="${propName}">
         <%
-        constraints.inList.each{
-        out << "<option value='${it}' \${${grace.util.ClassUtil.propertyName(entityClass)}.${propName}=='${it}' ? 'selected' : ''}>${it}</option>  "
-        }
+            constraints.inList.each {
+                out << "<option value='${it}' th:selected=\"\${${grace.util.ClassUtil.propertyName(entityClass)}.${propName} == '${it}'}\">${it}</option>  "
+            }
         %>
     </select>
 </div>

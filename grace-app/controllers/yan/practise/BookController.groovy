@@ -24,11 +24,15 @@ get('show/@id') {
         return
     }
 
-    render('show',[book:book])
+    render('show', [book: book])
 }
 
 get('create') {
-    render('create',[:])
+    println(params)
+    Book book = new Book()
+    book.title = params.title
+    book.type = params.type
+    render('create', [book: book])
 }
 
 post('save') {
