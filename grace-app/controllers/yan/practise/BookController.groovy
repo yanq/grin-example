@@ -29,9 +29,7 @@ get('show/@id') {
 
 get('create') {
     println(params)
-    Book book = new Book()
-    book.title = params.title
-    book.type = params.type
+    Book book = Book.bind(params)
     render('create', [book: book])
 }
 
