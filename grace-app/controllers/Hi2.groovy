@@ -1,4 +1,5 @@
 import grace.app.GraceApp
+import grace.controller.request.Params
 import grace.controller.request.RequestBase
 import grace.generate.Generator
 import yan.practise.Book
@@ -14,14 +15,12 @@ def out = []
 // println content
 //
 
-RequestBase.Params params = new RequestBase.Params()
-def p = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+Params params = new Params()
+params.date = "Sat Oct 06 16:57:02 CST 2018"
 
-def date = "2018 Oct 06 14:59:00"
-def f = new SimpleDateFormat(p)
-
-println f.format(new Date())
-// println f.parse(date)
-// println(d)
-
-// println(new Date().toString())
+println(params.date('date'))
+// println(params.date('date','EEE MMM dd HH:mm:ss z yyyy'))
+// SimpleDateFormat format = new SimpleDateFormat('EEE MMM dd HH:mm:ss z yyyy',Locale.ENGLISH)
+// println(format.format(new Date()))
+//
+// println format.parse(params.date)
