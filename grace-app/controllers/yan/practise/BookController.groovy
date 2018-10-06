@@ -28,13 +28,23 @@ get('show/@id') {
 }
 
 get('create') {
-    println(params)
     Book book = Book.bind(params)
     render('create', [book: book])
 }
 
 post('save') {
+    Book book = Book.bind(params)
+    book.validate()
 
+    if (book.errors) {
+        render('create', [book: book])
+    } else {
+        if (book.save()) {
+            redirect("show/${book.id}")
+        } else {
+            render('create', [book: book])
+        }
+    }
 }
 
 get('edit') {
