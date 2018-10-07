@@ -1,3 +1,4 @@
+
 package yan.practise
 
 import static grace.controller.route.Routes.*
@@ -7,7 +8,6 @@ import static grace.controller.route.Routes.*
  * something about this controller
  */
 
-// list page
 get('index') {
     params.limit = params.limit ?: 10
     params.order = params.order ?: 'id desc'
@@ -82,8 +82,9 @@ post('update') {
     }
 }
 
-post('delete/@id') {
+get('delete/@id') {
     Book book = Book.get(params.id)
     book.delete()
     redirect("../index")
 }
+

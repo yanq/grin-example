@@ -8,34 +8,87 @@ ${ packageName ? "package " + packageName : '' }
 import static grace.controller.route.Routes.*
 
 /**
- * ${grace.util.ClassUtil.simpleName(entityClass)}
+ * ${simpleName}
  * something about this controller
  */
 
 get('index') {
+    params.limit = params.limit ?: 10
+    params.order = params.order ?: 'id desc'
 
+    def list = ${simpleName}.list(params)
+    def count = ${simpleName}.count()
+
+    render('index', [list: list, count: count])
 }
 
-get('show') {
+get('show/@id') {
+    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
+    if (!${propertyName}) {
+        notFound()
+        return
+    }
+
+    render('show', [${propertyName}: ${propertyName}])
 }
 
 get('create') {
-
+    ${simpleName} ${propertyName} = ${simpleName}.from(params)
+    render('create', [${propertyName}: ${propertyName}])
 }
 
 post('save') {
+    ${simpleName} ${propertyName} = ${simpleName}.from(params)
+    ${propertyName}.validate()
 
+    if (${propertyName}.errors) {
+        render('create', [${propertyName}: ${propertyName}])
+    } else {
+        if (${propertyName}.save()) {
+            redirect("show/\${${propertyName}.id}")
+        } else {
+            render('create', [${propertyName}: ${propertyName}])
+        }
+    }
 }
 
-get('edit') {
+get('edit/@id') {
+    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
+    if (!${propertyName}) {
+        notFound()
+        return
+    }
+
+    render('edit', [${propertyName}: ${propertyName}])
 }
 
 post('update') {
+    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
+    if (!${propertyName}) {
+        notFound()
+        return
+    }
+
+    ${propertyName}.bind(params)
+    ${propertyName}.validate()
+
+    if (${propertyName}.errors) {
+        render('edit', [${propertyName}: ${propertyName}])
+    } else {
+        if (${propertyName}.save()) {
+            redirect("show/\${${propertyName}.id}")
+        } else {
+            render('edit', [${propertyName}: ${propertyName}])
+        }
+    }
 }
 
-post('delete') {
-
+get('delete/@id') {
+    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
+    ${propertyName}.delete()
+    redirect("../index")
 }
+
