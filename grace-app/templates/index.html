@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
     <head>
-        <title>List</title>
+        <title>${propertyName} list</title>
     </head>
 
     <body>
-        <h1>List</h1>
+        <h1>${propertyName} list</h1>
         <table class="table table-bordered">
             <tr>
                 <%
@@ -13,12 +13,13 @@
                         out << " <th>${it}</th>\n "
                     }
                 %>
+                <th>ops</th>
             </tr>
-            <tr th:each="${entityName}:\${list}">
+            <tr th:each="${propertyName}:\${list}">
                 <%
                     int i = 0
                     entityClass.props.each {
-                        def p = "${entityName}.${it}"
+                        def p = "${propertyName}.${it}"
                         if (i == 0) {
                             out << "<td><a href=\"#\" th:text=\"\${${p}}\" th:href=\"|show/\${${p}}|\">PropertyValue</a></td> \n"
                         } else {
@@ -27,6 +28,10 @@
                         i++
                     }
                 %>
+                <td>
+                    <a href="#" th:href="|edit/\${${propertyName}.id}|">修改</a>
+                    <a href="#" th:href="|delete/\${${propertyName}.id}|">删除</a>
+                </td>
             </tr>
         </table>
     </body>

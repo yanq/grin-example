@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
     <head>
-        <title>\${${entityName}}</title>
+        <title>show ${propertyName}</title>
     </head>
 
     <body>
-        <h1>Book</h1>
+        <h1>show ${propertyName}</h1>
         <%
             entityClass.props.each {
-                out << "<p><span>${it}</span> : <span th:text=\"\${${entityName}.${it}}\">PropertyValue</span></p>\n"
+                out << "<p><span>${it}</span> : <span th:text=\"\${${propertyName}.${it}}\">PropertyValue</span></p>\n"
             }
         %>
     </body>

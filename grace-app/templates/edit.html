@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
     <head>
-        <title>create ${grace.util.ClassUtil.propertyName(entityClass)}</title>
+        <title>edit ${propertyName}</title>
     </head>
 
     <body>
-        <h1>create ${grace.util.ClassUtil.propertyName(entityClass)}</h1>
+        <h1>edit ${propertyName}</h1>
 
-        <form>
-            <input type="hidden" name="id" value="\${${grace.util.ClassUtil.propertyName(entityClass)}.id}">
+        <th:block th:if="\${${propertyName}.errors.size()>0}">
+            <p th:text="\${${propertyName}.errors}"></p>
+        </th:block>
+
+        <form action="/${propertyName}/update" method="post">
+            <input type="hidden" name="id" th:value="\${${propertyName}.id}">
             <%
                 out << grace.generate.FormGenerator.generateForm(entityClass)
             %>

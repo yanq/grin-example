@@ -19,12 +19,5 @@ class Book implements Entity<Book> {
         title nullable: false, blank: false, size: 1..5 comment '字符串长度要处于 1 到 5 之间'
         type inList:['语文','数学']
     }
-
-    public static void main(String[] args) {
-        Book book = new Book()
-        book.title = '1'
-        println book.validate()
-        println book.errors
-    }
 }
 

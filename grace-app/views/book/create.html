@@ -6,29 +6,28 @@
 
     <body>
         <h1>create book</h1>
+
         <th:block th:if="${book.errors.size()>0}">
             <p th:text="${book.errors}"></p>
         </th:block>
-        <form action="save" method="post">
-            <div class="form-group">
-                <label for="title">title</label>
-                <input type="text" name="title" th:value="${book.title}" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title">
-                <small id="titleHelp" class="form-text text-muted">字符串长度要处于 1 到 5 之间</small>
-            </div>
 
+        <form action="/book/save" method="post">
             <div class="form-group">
-                <label for="type">type select</label>
-                <select class="form-control" name="type" id="type">
-                    <option value='语文' th:selected="${book.type == '语文'}">语文</option>  <option value='数学' th:selected="${book.type == '数学'}">数学</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="publishAt">publishAt</label>
-                <input type="datetime" name="publishAt" th:value="${book.publishAt}" class="form-control" id="publishAt" aria-describedby="publishAtHelp"
-                       placeholder="Enter publishAt">
-                <small id="publishAtHelp" class="form-text text-muted"></small>
-            </div>
+    <label for="title">title</label>
+    <input type="text" name="title" th:value="${book.title}" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title">
+    <small id="titleHelp" class="form-text text-muted">字符串长度要处于 1 到 5 之间</small>
+</div>
+<div class="form-group">
+    <label for="type">type select</label>
+    <select class="form-control" name="type" id="type">
+        <option value='语文' th:selected="${book.type == '语文'}">语文</option>  <option value='数学' th:selected="${book.type == '数学'}">数学</option>  
+    </select>
+</div>
+<div class="form-group">
+    <label for="publishAt">publishAt</label>
+    <input type="datetime" name="publishAt" th:value="${book.publishAt}" class="form-control" id="publishAt" aria-describedby="publishAtHelp" placeholder="Enter publishAt">
+    <small id="publishAtHelp" class="form-text text-muted"></small>
+</div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </body>
