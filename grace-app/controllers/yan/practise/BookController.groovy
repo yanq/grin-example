@@ -1,7 +1,5 @@
 package yan.practise
 
-import org.apache.groovy.dateutil.extensions.DateUtilExtensions
-
 import static grace.controller.route.Routes.*
 
 /**
@@ -84,6 +82,8 @@ post('update') {
     }
 }
 
-post('delete') {
-
+post('delete/@id') {
+    Book book = Book.get(params.id)
+    book.delete()
+    redirect("../index")
 }
