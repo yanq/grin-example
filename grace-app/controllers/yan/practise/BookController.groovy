@@ -1,5 +1,7 @@
 package yan.practise
 
+import org.apache.groovy.dateutil.extensions.DateUtilExtensions
+
 import static grace.controller.route.Routes.*
 
 /**
@@ -10,6 +12,8 @@ import static grace.controller.route.Routes.*
 // list page
 get('index') {
     params.limit = params.limit ?: 10
+    params.order = params.order ?: 'id desc'
+
     def list = Book.list(params)
     def count = Book.count()
 
@@ -28,12 +32,12 @@ get('show/@id') {
 }
 
 get('create') {
-    Book book = Book.bind(params)
+    Book book = Book.from(params)
     render('create', [book: book])
 }
 
 post('save') {
-    Book book = Book.bind(params)
+    Book book = Book.from(params)
     book.validate()
 
     if (book.errors) {
@@ -47,12 +51,37 @@ post('save') {
     }
 }
 
-get('edit') {
+get('edit/@id') {
+    Book book = Book.get(params.id)
 
+    if (!book) {
+        notFound()
+        return
+    }
+
+    render('edit', [book: book])
 }
 
 post('update') {
+    Book book = Book.get(params.id)
 
+    if (!book) {
+        notFound()
+        return
+    }
+
+    book.bind(params)
+    book.validate()
+
+    if (book.errors) {
+        render('edit', [book: book])
+    } else {
+        if (book.save()) {
+            redirect("show/${book.id}")
+        } else {
+            render('edit', [book: book])
+        }
+    }
 }
 
 post('delete') {

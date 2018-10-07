@@ -24,3 +24,6 @@ println(params.date('date'))
 // println(format.format(new Date()))
 //
 // println format.parse(params.date)
+
+// Date now = new Date()
+// now()
