@@ -1,11 +1,11 @@
-${ packageName ? "package " + packageName : '' }
+package yan
 
 import grace.datastore.entity.Entity
 
 /**
- * ${simpleName}
+ * Roo
  */
-class ${simpleName} implements Entity< ${simpleName} > {
+class Roo implements Entity<Roo> {
     long id //must,long or String
     String title
     Date publishAt = new Date()

@@ -1,9 +1,9 @@
-${ packageName ? "package " + packageName : '' }
+package yan
 
 import static grace.controller.route.Routes.*
 
 /**
- * ${simpleName}
+ * Roo
  * something about this controller
  */
 
