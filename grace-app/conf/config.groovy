@@ -5,6 +5,12 @@ server.host = 'localhost'
 server.port = 8080
 server.context = '/'
 
+// 文件上传
+fileUplod.location = ''
+fileUplod.maxFileSize = -1L
+fileUplod.maxRequestSize = -1L
+fileUplod.fileSizeThreshold = 0
+
 //environments
 environments {
     dev {
@@ -20,7 +26,7 @@ environments {
             validationQuery = 'select 1'
             useGlobalDataSourceStat = true
         }
-       // logSql = true
+        // logSql = true
     }
     prod {
         name = "Grace Prod"
