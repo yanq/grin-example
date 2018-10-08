@@ -62,6 +62,7 @@ dependencies {
 task grace(type: JavaExec) {
     group 'grace'
     setStandardInput(System.in)
+    jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
     main = 'grace.app.GraceMain'
 }
@@ -69,6 +70,7 @@ task grace(type: JavaExec) {
 //启动服务
 task run(type: JavaExec) {
     group 'grace'
+    jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
     main = 'grace.app.GraceMain'
     args 'run'
