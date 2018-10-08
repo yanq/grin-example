@@ -18,7 +18,7 @@ group 'xyz.itbang'
 version '0.1'
 
 sourceCompatibility = 1.8
-//mainClassName = "org.gradle.sample.Main"
+//mainClassName = ""
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
