@@ -63,7 +63,7 @@ task run(type: JavaExec) {
     group 'grace'
     classpath = sourceSets.main.runtimeClasspath
     main = 'grace.app.GraceServer'
-    args projectDir.absolutePath //设置项目路径
+    //args  //设置项目路径
 }
 
 task prepare(type: Copy) {
