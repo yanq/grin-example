@@ -48,11 +48,6 @@ get('upload') {
     render 'upload', [name: 'Grace !']
 }
 
-/**
- * asset
- */
-assets('/asset')
-
 //拦截器
 before {
     request.beforeAt = System.nanoTime()
