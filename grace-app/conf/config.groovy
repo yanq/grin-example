@@ -6,14 +6,22 @@ server.port = 8080
 server.context = '/'
 
 // 文件上传
-fileUplod.location = ''
-fileUplod.maxFileSize = -1L
-fileUplod.maxRequestSize = -1L
-fileUplod.fileSizeThreshold = 0
+fileUpload.upload = '/upload'
+fileUpload.download = '/uploads'
+fileUpload.location = '/temp/uploads'
+fileUpload.maxFileSize = -1L
+fileUpload.maxRequestSize = -1L
+fileUpload.fileSizeThreshold = 0
+//文件处理 URI
+assets.uri = '/assets'
+files.uri = '/files' //静态文件
 
 //environments
 environments {
     dev {
+        //重设 location
+        fileUpload.location = 'd:/temp/uploads'
+
         dataSource {
             url = "jdbc:mysql://localhost/grace"
             driverClassName = "com.mysql.jdbc.Driver"

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
+    <head>
+        <title>book list</title>
+    </head>
+
+    <body>
+        <h1>book list</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" name="file" multiple="multiple" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </body>
+</html>

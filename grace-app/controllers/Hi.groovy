@@ -1,5 +1,6 @@
 import grace.app.GraceServer
 import grace.controller.route.Routes
+import grace.util.FileUtil
 import yan.practise.Book
 import static grace.controller.route.Routes.*
 
@@ -7,8 +8,8 @@ import static grace.controller.route.Routes.*
  * 首页
  */
 get('/') {
-    def routes = Routes.routes.findAll{it.method == Routes.METHOD_GET && !it.path.contains('@') && !it.path.contains('*')}
-    render('/index',[routes: routes])
+    def routes = Routes.routes.findAll { it.method == Routes.METHOD_GET && !it.path.contains('@') && !it.path.contains('*') }
+    render('/index', [routes: routes])
 }
 
 /**
@@ -43,8 +44,8 @@ get('/p/@name') {
 /**
  * 测试模板
  */
-get('/r') {
-    render 'index', [name: 'Grace !']
+get('upload') {
+    render 'upload', [name: 'Grace !']
 }
 
 /**
