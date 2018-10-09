@@ -1,10 +1,5 @@
-import grace.app.GraceApp
-import grace.controller.request.Params
-import grace.controller.request.RequestBase
-import grace.generate.Generator
+import grace.common.Params
 import yan.practise.Book
-
-import java.text.SimpleDateFormat
 
 def entityClass = Book
 def out = []
