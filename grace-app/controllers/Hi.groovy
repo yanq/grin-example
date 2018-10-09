@@ -8,7 +8,7 @@ import static grace.controller.route.Routes.*
  * 首页
  */
 get('/') {
-    def routes = Routes.routes.findAll { it.method == Routes.METHOD_GET && !it.path.contains('@') && !it.path.contains('*') }
+    def routes = Routes.routes.findAll { it.method in [Routes.METHOD_GET,Routes.METHOD_ALL] && !it.path.contains('@') && !it.path.contains('*') }
     render('/index', [routes: routes])
 }
 
@@ -46,6 +46,10 @@ get('/p/@name') {
  */
 get('upload') {
     render 'upload', [name: 'Grace !']
+}
+
+req('h') {
+    html.p('html content')
 }
 
 //拦截器
