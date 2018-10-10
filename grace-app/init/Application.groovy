@@ -9,8 +9,8 @@ import org.codehaus.groovy.runtime.InvokerHelper
  */
 class Application {
     public static void main(String[] args) {
-        // GraceApp.setRootAndEnv(new File('grace-example'),GraceApp.ENV_DEV)
-        // new GraceServer().startApp()
-        InvokerHelper.runScript(HiSimple)
+        GraceApp.setRootAndEnv(new File('grace-example'), GraceApp.ENV_DEV)
+        new GraceServer().startApp()
+        // InvokerHelper.runScript(HiSimple)
     }
 }
