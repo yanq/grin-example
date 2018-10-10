@@ -1,6 +1,7 @@
 import grace.app.GraceApp
 import grace.app.GraceServer
 import grace.generate.Generator
+import org.codehaus.groovy.runtime.InvokerHelper
 
 /**
  * 启动
@@ -8,7 +9,8 @@ import grace.generate.Generator
  */
 class Application {
     public static void main(String[] args) {
-        GraceApp.setRootAndEnv(new File('grace-example'),GraceApp.ENV_DEV)
-        new GraceServer().startApp()
+        // GraceApp.setRootAndEnv(new File('grace-example'),GraceApp.ENV_DEV)
+        // new GraceServer().startApp()
+        InvokerHelper.runScript(HiSimple)
     }
 }
