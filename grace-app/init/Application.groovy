@@ -1,7 +1,5 @@
 import grace.app.GraceApp
-import grace.app.GraceServer
-import grace.generate.Generator
-import org.codehaus.groovy.runtime.InvokerHelper
+import grace.servlet.GraceServer
 
 /**
  * 启动
