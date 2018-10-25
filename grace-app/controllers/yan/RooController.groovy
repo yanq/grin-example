@@ -1,6 +1,6 @@
 package yan
 
-import static grace.controller.route.Routes.*
+import static grace.route.Routes.*
 
 /**
  * Roo

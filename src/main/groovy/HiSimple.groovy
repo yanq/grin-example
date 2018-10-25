@@ -1,4 +1,4 @@
-import grace.controller.route.Routes
+import grace.route.Routes
 import grace.simple.SimpleServer
 
 /**

@@ -1,8 +1,6 @@
-import grace.app.GraceServer
-import grace.controller.route.Routes
-import grace.util.FileUtil
-import yan.practise.Book
-import static grace.controller.route.Routes.*
+import grace.route.Routes
+
+import static grace.route.Routes.*
 
 /**
  * 首页

@@ -1,6 +1,6 @@
 package yan.practise
 
-import static grace.controller.route.Routes.*
+import static grace.route.Routes.*
 
 /**
  * Book
