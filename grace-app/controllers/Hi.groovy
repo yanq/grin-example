@@ -48,6 +48,10 @@ get('upload') {
     render 'upload', [name: 'Grace !']
 }
 
+get('/error') {
+    throw new Exception("半路杀出个程咬金")
+}
+
 req('h') {
     html.p('html content')
 }

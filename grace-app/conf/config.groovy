@@ -15,6 +15,9 @@ fileUpload.fileSizeThreshold = 0
 //文件处理 URI
 assets.uri = '/assets'
 files.uri = '/files' //静态文件
+//views
+views.notFound = '/notFound.html'
+views.error = '/error.html'
 
 //environments
 environments {
