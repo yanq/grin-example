@@ -51,7 +51,7 @@ get('/error') {
 }
 
 req('h') {
-    html.p('html content')
+    html.p('html content    ')
 }
 
 //拦截器
