@@ -8,7 +8,7 @@ Logger log = LoggerFactory.getLogger(this.class)
  * 首页
  */
 get('/') {
-    log.info("log something ~~ ")
+    log.info("log something ~~ ${flash.message}")
     def routes = Routes.routes.findAll { it.method in [Routes.METHOD_GET, Routes.METHOD_ALL] && !it.path.contains('@') && !it.path.contains('*') }
     render('/index', [routes: routes])
 }
@@ -55,6 +55,11 @@ get('/error') {
 
 req('h') {
     html.p('html content  ')
+}
+//redirect
+get('/r'){
+    flash.message = "测试 flash 作用域，message"
+    redirect('/')
 }
 
 //拦截器
