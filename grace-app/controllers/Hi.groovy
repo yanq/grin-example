@@ -9,7 +9,7 @@ Logger log = LoggerFactory.getLogger(this.class)
  */
 get('/') {
     log.info("log something ~~ ")
-    def routes = Routes.routes.findAll { it.method in [Routes.METHOD_GET,Routes.METHOD_ALL] && !it.path.contains('@') && !it.path.contains('*') }
+    def routes = Routes.routes.findAll { it.method in [Routes.METHOD_GET, Routes.METHOD_ALL] && !it.path.contains('@') && !it.path.contains('*') }
     render('/index', [routes: routes])
 }
 
