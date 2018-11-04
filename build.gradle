@@ -42,7 +42,7 @@ sourceSets {
 
 dependencies {
     compile project(':grace')
-    compile 'org.codehaus.groovy:groovy-all:2.5.1'
+    compile 'org.codehaus.groovy:groovy-all:2.4.15'
     compile 'io.undertow:undertow-servlet:2.0.13.Final'
     compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
     
