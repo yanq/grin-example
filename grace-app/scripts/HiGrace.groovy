@@ -7,5 +7,5 @@ import yan.practise.Book
 
 GraceApp.setRootAndEnv(new File('D:\\IdeaProjects\\grace-dev\\grace-example'))
 
-def books = Book.getAll([1,2,3])
+def books = Book.where('id in (?,?,?)',1,2,3).list()
 println(books)
