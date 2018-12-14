@@ -9,6 +9,7 @@ import groovy.transform.ToString
 @ToString(includeNames = true, excludes = ['errors'])
 class Book implements Entity<Book> {
     long id
+    Author author
     String title
     String type
     Date publishAt = new Date()
