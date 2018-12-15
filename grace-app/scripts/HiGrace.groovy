@@ -15,10 +15,7 @@ GraceApp.setRootAndEnv(new File('D:\\IdeaProjects\\grace-dev\\grace-example'))
 //     it.save()
 // }
 
-Book book = new Book()
-book.title='tij'
-book.author = Author.get(1)
-println(book.validate())
-println(book.errors)
-book.save()
+Book book = new Book(id: 2)
+book.refresh()
+book.author.refresh()
 println(book)
