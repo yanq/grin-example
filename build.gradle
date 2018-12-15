@@ -32,6 +32,7 @@ sourceSets {
             srcDir "grace-app/controllers"
             srcDir "grace-app/interceptors"
             srcDir "grace-app/views"
+            srcDir "grace-app/scripts"
             srcDir "grace-app/init"
         }
         resources {

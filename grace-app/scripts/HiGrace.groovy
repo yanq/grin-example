@@ -1,4 +1,5 @@
 import grace.app.GraceApp
+import yan.practise.Author
 import yan.practise.Book
 
 /**
@@ -7,7 +8,17 @@ import yan.practise.Book
 
 GraceApp.setRootAndEnv(new File('D:\\IdeaProjects\\grace-dev\\grace-example'))
 
-def books = Book.where('id in (?,?,?)',1,2,3).list()
-books.each {
-    println(it)
-}
+// def books = Book.where('id in (?,?,?)',1,2,3).list()
+// books.each {
+//     println(it)
+//     it.author = new Author(id: 2)
+//     it.save()
+// }
+
+Book book = new Book()
+book.title='tij'
+book.author = Author.get(1)
+println(book.validate())
+println(book.errors)
+book.save()
+println(book)
