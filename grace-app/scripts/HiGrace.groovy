@@ -10,9 +10,13 @@ import yan.practise.Book
 GraceApp.setRootAndEnv(new File('D:\\IdeaProjects\\grace-dev\\grace-example'))
 
 def books = Book.where('id in (?,?,?)',1,2,3).list()
-EntityUtil.fetch(books)
+books.fetch()
 books.each {
     println(it)
     it.author = new Author(id: 2)
     it.save()
 }
+
+def date = Date.parseDate('2018-01-01 01:01')
+def d = date.format()
+println(d)
