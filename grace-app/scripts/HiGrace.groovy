@@ -1,4 +1,5 @@
 import grace.app.GraceApp
+import grace.common.Params
 import grace.datastore.entity.EntityUtil
 import yan.practise.Author
 import yan.practise.Book
@@ -9,6 +10,9 @@ import yan.practise.Book
 
 GraceApp.setRootAndEnv(new File('D:\\IdeaProjects\\grace-dev\\grace-example'))
 
-Author author = new Author()
-author.name = "Jack"
+Author author = Author.get(2)
+author.bind([createAt: ''] as Params)
 author.save()
+//
+// if ('') println('kong')
+// if ([a:''].containsKey('a')) println('kong a')
