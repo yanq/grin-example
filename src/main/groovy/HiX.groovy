@@ -1,5 +1,5 @@
 import grace.datastore.entity.Entity
-import yan.practise.Book
+import book.Book
 
 /**
  * 测试用

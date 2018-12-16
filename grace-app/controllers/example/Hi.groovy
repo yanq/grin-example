@@ -1,3 +1,4 @@
+package example
 import grace.route.Routes
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

@@ -1,8 +1,5 @@
 import grace.app.GraceApp
-import grace.common.Params
-import grace.datastore.entity.EntityUtil
-import yan.practise.Author
-import yan.practise.Book
+import book.Book
 
 /**
  * 测试 Grace
