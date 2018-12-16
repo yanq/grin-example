@@ -10,9 +10,10 @@ import yan.practise.Book
 
 GraceApp.setRootAndEnv(new File('D:\\IdeaProjects\\grace-dev\\grace-example'))
 
-Author author = Author.get(2)
-author.bind([createAt: ''] as Params)
-author.save()
-//
-// if ('') println('kong')
-// if ([a:''].containsKey('a')) println('kong a')
+Book book = new Book()
+book.title='Hi World!'
+book.type = "语文"
+book.price = 3.5
+book.validate()
+println(book.errors)
+book.save()
