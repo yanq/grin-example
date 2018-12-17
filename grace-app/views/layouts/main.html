@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title th:text="|${title} Grace|">Layout Title</title>
+        <title th:replace="${title}">Layout Title</title>
         [(${g.assetJs('application.js')})]
         [(${g.assetCss('application.css')})]
     </head>

@@ -3,6 +3,7 @@ ${ packageName ? "package " + packageName : '' }
 import static grace.route.Routes.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
 Logger log = LoggerFactory.getLogger(this.class)
 
 /**
@@ -11,7 +12,7 @@ Logger log = LoggerFactory.getLogger(this.class)
  */
 
 get('index') {
-    params.limit = params.limit ?: 10
+    params.limit = params.limit ? params.limit.toInteger() : 10
     params.order = params.order ?: 'id desc'
 
     def list = ${simpleName}.list(params)
