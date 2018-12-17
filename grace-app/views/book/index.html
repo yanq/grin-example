@@ -1,31 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
     <head>
         <title>book list</title>
     </head>
 
     <body>
-        <h1>book list</h1>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+            <h1 class="h2">book list</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <a class="btn btn-sm btn-outline-secondary" href="create"> 新建 </a>
+            </div>
+        </div>
         <table class="table table-bordered">
-            <tr>
-                 <th>id</th>
-  <th>title</th>
-  <th>type</th>
-  <th>publishAt</th>
- 
-                <th>ops</th>
-            </tr>
-            <tr th:each="book:${list}">
-                <td><a href="#" th:text="${book.id}" th:href="|show/${book.id}|">PropertyValue</a></td> 
- <td th:text="${book.title}">PropertyValue</td> 
-  <td th:text="${book.type}">PropertyValue</td> 
-  <td th:text="${book.publishAt}">PropertyValue</td> 
- 
-                <td>
-                    <a href="#" th:href="|edit/${book.id}|">修改</a>
-                    <a href="#" th:href="|delete/${book.id}|">删除</a>
-                </td>
-            </tr>
+            <thead class="text-center">
+                <tr>
+                    <th width="80px">id</th>
+                    <th>content</th>
+                    <th width="120px">ops</th>
+                </tr>
+            </thead>
+           <tbody>
+               <tr th:each="book:${list}">
+                   <td class="text-center"><a href="#" th:text="${book.id}" th:href="|show/${book.id}|">PropertyValue</a></td>
+                   <td>
+                       <p><span th:text="id"></span>:<span class="ml-3" th:text="${book.id}"></span></p>
+<p><span th:text="author"></span>:<span class="ml-3" th:text="${book.author}"></span></p>
+<p><span th:text="title"></span>:<span class="ml-3" th:text="${book.title}"></span></p>
+<p><span th:text="type"></span>:<span class="ml-3" th:text="${book.type}"></span></p>
+<p><span th:text="price"></span>:<span class="ml-3" th:text="${book.price}"></span></p>
+<p><span th:text="publishAt"></span>:<span class="ml-3" th:text="${book.publishAt}"></span></p>
+
+                   </td>
+                   <td class="text-center">
+                       <a href="#" th:href="|edit/${book.id}|">修改</a>
+                       <a class="ml-3" href="#" th:href="|delete/${book.id}|">删除</a>
+                   </td>
+               </tr>
+           </tbody>
         </table>
+        [(${g.pagination(params.offset,params.limit,count)})]
     </body>
 </html>

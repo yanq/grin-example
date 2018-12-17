@@ -1,0 +1,6 @@
+<div class="form-group">
+    <label for="${propName}Id">${propName} select</label>
+    <select class="form-control" name="${propName}Id" id="${propName}Id">
+        <option th:value='\${${propName}.id}' th:each="${propName}:\${${propName}List}" th:selected="\${${propName}.id == params['${propName}Id']}" th:text="\${${propName}}">选项 X</option>
+    </select>
+</div>

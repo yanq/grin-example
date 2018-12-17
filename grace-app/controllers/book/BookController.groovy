@@ -1,6 +1,10 @@
 package book
 
 import static grace.route.Routes.*
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+Logger log = LoggerFactory.getLogger(this.class)
 
 /**
  * Book
@@ -30,7 +34,7 @@ get('show/@id') {
 
 get('create') {
     Book book = Book.from(params)
-    render('create', [book: book])
+    render('create', [book: book, authorList: Author.list()])
 }
 
 post('save') {
@@ -56,7 +60,7 @@ get('edit/@id') {
         return
     }
 
-    render('edit', [book: book])
+    render('edit', [book: book, authorList: Author.list()])
 }
 
 post('update') {

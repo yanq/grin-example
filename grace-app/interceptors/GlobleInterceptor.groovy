@@ -8,7 +8,7 @@ Logger log = LoggerFactory.getLogger(this.class)
  * 权限控制
  */
 
-def publicControllers = ['hi','graceApp']
+def publicControllers = ['hi','graceApp','book']
 def adminControllers = []
 def allControllers = publicControllers + adminControllers
 

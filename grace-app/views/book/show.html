@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
     <head>
         <title>show book</title>
     </head>
 
     <body>
-        <h1>show book</h1>
-        <p><span>id</span> : <span th:text="${book.id}">PropertyValue</span></p>
-<p><span>title</span> : <span th:text="${book.title}">PropertyValue</span></p>
-<p><span>type</span> : <span th:text="${book.type}">PropertyValue</span></p>
-<p><span>publishAt</span> : <span th:text="${book.publishAt}">PropertyValue</span></p>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1>show book</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <a class="btn btn-sm btn-outline-secondary" href="edit" th:href="|../edit/${book.id}|"> 修改 </a>
+                <a class="btn btn-sm btn-outline-secondary ml-2" href="delete" th:href="|../delete/${book.id}|"> 删除 </a>
+            </div>
+        </div>
+        <p><span>id</span> : <span class="ml-3" th:text="${book.id}">PropertyValue</span></p>
+<p><span>author</span> : <span class="ml-3" th:text="${book.author}">PropertyValue</span></p>
+<p><span>title</span> : <span class="ml-3" th:text="${book.title}">PropertyValue</span></p>
+<p><span>type</span> : <span class="ml-3" th:text="${book.type}">PropertyValue</span></p>
+<p><span>price</span> : <span class="ml-3" th:text="${book.price}">PropertyValue</span></p>
+<p><span>publishAt</span> : <span class="ml-3" th:text="${book.publishAt}">PropertyValue</span></p>
 
     </body>
 </html>

@@ -1,5 +1,6 @@
 import grace.app.GraceApp
 import book.Book
+import grace.generate.FormGenerator
 
 /**
  * 测试 Grace
@@ -7,10 +8,5 @@ import book.Book
 
 GraceApp.setRootAndEnv(new File('D:\\IdeaProjects\\grace-dev\\grace-example'))
 
-Book book = new Book()
-book.title='Hi World!'
-book.type = "语文"
-book.price = 3.5
-book.validate()
-println(book.errors)
-book.save()
+def s = FormGenerator.entity(Book,'author','',[:])
+println(s)

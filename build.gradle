@@ -75,11 +75,12 @@ task run(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'grace.app.GraceMain'
     args 'run'
+    // println("命令："+commandLine.join(' '))
 }
 
 // 运行 grace 命令之前的准备，主要是编译和处理依赖
 task prepare(type: Copy) {
-    // dependsOn classes,assetCompile
+    dependsOn classes,assetCompile
     group 'grace'
     into "$buildDir/grace"
     from sourceSets.main.runtimeClasspath
