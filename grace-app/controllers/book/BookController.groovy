@@ -31,6 +31,8 @@ get('show/@id') {
         return
     }
 
+    book.fetch()
+
     render('show', [book: book])
 }
 

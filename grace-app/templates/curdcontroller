@@ -18,6 +18,8 @@ get('index') {
     def list = ${simpleName}.list(params)
     def count = ${simpleName}.count()
 
+    list.fetch()
+
     render('index', [list: list, count: count])
 }
 
@@ -28,6 +30,8 @@ get('show/@id') {
         notFound()
         return
     }
+
+    ${propertyName}.fetch()
 
     render('show', [${propertyName}: ${propertyName}])
 }
