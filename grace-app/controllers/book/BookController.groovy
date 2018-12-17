@@ -18,6 +18,8 @@ get('index') {
     def list = Book.list(params)
     def count = Book.count()
 
+    list.fetch()
+
     render('index', [list: list, count: count])
 }
 

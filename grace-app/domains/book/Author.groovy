@@ -17,5 +17,10 @@ class Author implements Entity<Author> {
     static constraints = {
         name nullable: true, blank: true, size: 1..5 comment '字符串长度要处于 1 到 5 之间'
     }
+
+    @Override
+    String toString() {
+        return name
+    }
 }
 
