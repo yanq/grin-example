@@ -1,6 +1,9 @@
 <div class="form-group">
     <label for="${propName}Id">${propName} select</label>
     <select class="form-control" name="${propName}Id" id="${propName}Id">
-        <option th:value='\${${propName}.id}' th:each="${propName}:\${${propName}List}" th:selected="\${${propName}.id == params['${propName}Id']}" th:text="\${${propName}}">选项 X</option>
+        <option value=''>请选择</option>
+        <option th:value='\${${propName}.id}' th:each="${propName}:\${${propName}List}"
+                th:selected="\${${grace.util.ClassUtil.propertyName(entityClass)}.${propName}} ? \${${propName}.id == ${grace.util.ClassUtil.propertyName(entityClass)}.${propName}.id}"
+                th:text="\${${propName}}">选项 X</option>
     </select>
 </div>

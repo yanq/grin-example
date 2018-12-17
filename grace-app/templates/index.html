@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title/text()}, ~{::body})}">
     <head>
         <title>${propertyName} list</title>
     </head>
