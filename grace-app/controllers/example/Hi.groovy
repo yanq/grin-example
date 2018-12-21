@@ -67,6 +67,7 @@ get('/r'){
 before {
     request.beforeAt = System.nanoTime()
     log.info("before interceptor ")
+    return true
 }
 after {
     log.info("after interceptor,${(System.nanoTime() - request.beforeAt) / 1000000} ms")
