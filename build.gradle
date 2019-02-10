@@ -1,28 +1,50 @@
-buildscript {
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.0.5"
-    }
+plugins {
+    // id 'com.github.johnrengelman.shadow' version '4.0.4'
+    id 'com.bertramlabs.asset-pipeline' version '3.0.6'
+    id 'java'
+    id 'groovy'
+    // id 'application'
 }
-
-apply plugin: "com.bertramlabs.asset-pipeline"
-apply plugin: 'java'
-apply plugin: 'groovy'
-//apply plugin: 'application'
+// buildscript {
+//     repositories {
+//         maven {
+//             url "https://plugins.gradle.org/m2/"
+//         }
+//     }
+//     dependencies {
+//         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.0.5"
+//     }
+// }
+//
+// apply plugin: "com.bertramlabs.asset-pipeline"
+// apply plugin: 'java'
+// apply plugin: 'groovy'
+// apply plugin: 'application'
 
 group 'xyz.itbang'
 version '0.1'
 
 sourceCompatibility = 1.8
-//mainClassName = ""
+// mainClassName = ""
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     mavenCentral()
+}
+
+dependencies {
+    compile project(':grace')
+    compile 'org.codehaus.groovy:groovy-all:2.5.4'
+    compile 'io.undertow:undertow-servlet:2.0.13.Final'
+    compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
+    
+    compile 'com.alibaba:druid:1.1.10'
+    runtime "mysql:mysql-connector-java:5.1.38"
+
+    runtime 'org.slf4j:slf4j-api:1.7.22'
+    runtime 'ch.qos.logback:logback-classic:1.2.1'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
 sourceSets {
@@ -41,23 +63,22 @@ sourceSets {
     }
 }
 
-dependencies {
-    compile project(':grace')
-    compile 'org.codehaus.groovy:groovy-all:2.5.4'
-    compile 'io.undertow:undertow-servlet:2.0.13.Final'
-    compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
-    
-    //gorm
-    compile "org.grails:grails-datastore-gorm-hibernate5:6.1.9.RELEASE"
+// jar {
+//
+//     from {
+//         //添加依懒到打包文件
+//         //configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//         configurations.runtime.collect{zipTree(it)}
+//     }
+//     manifest {
+//         attributes 'Main-Class': Application
+//     }
+// }
 
-    compile 'com.alibaba:druid:1.1.10'
-    runtime "mysql:mysql-connector-java:5.1.38"
-
-    runtime 'org.slf4j:slf4j-api:1.7.22'
-    runtime 'ch.qos.logback:logback-classic:1.2.1'
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
+// shadowJar{
+//     mergeServiceFiles()
+//     mergeGroovyExtensionModules()
+// }
 
 //相当于 grace 命令，接收命令并执行
 task grace(type: JavaExec) {
@@ -69,7 +90,7 @@ task grace(type: JavaExec) {
 }
 
 //启动服务
-task run(type: JavaExec) {
+task runApp(type: JavaExec) {
     group 'grace'
     // jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
