@@ -63,6 +63,14 @@ get('/r'){
     redirect('/')
 }
 
+get('accept'){
+    println(accept('json'))
+    println(accept('xml'))
+    println(accept('html'))
+    println(accept('text'))
+    println(accept(['json','html']))
+}
+
 //拦截器
 before {
     request.beforeAt = System.nanoTime()
@@ -72,5 +80,7 @@ before {
 after {
     log.info("after interceptor,${(System.nanoTime() - request.beforeAt) / 1000000} ms")
 }
+
+
 
 // new GraceServer().start()
