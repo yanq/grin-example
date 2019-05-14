@@ -1,8 +1,10 @@
 package example
+
 import grace.route.Routes
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import static grace.route.Routes.*
+
 Logger log = LoggerFactory.getLogger(this.class)
 
 /**
@@ -10,7 +12,9 @@ Logger log = LoggerFactory.getLogger(this.class)
  */
 get('/') {
     log.info("log something ~~ ${flash.message}")
-    def routes = Routes.routes.findAll { it.method in [Routes.METHOD_GET, Routes.METHOD_ALL] && !it.path.contains('@') && !it.path.contains('*') }
+    def routes = Routes.routes.findAll {
+        it.method in [Routes.METHOD_GET, Routes.METHOD_ALL] && !it.path.contains('@') && !it.path.contains('*')
+    }
     render('/index', [routes: routes])
 }
 
@@ -27,6 +31,18 @@ get('/j') {
     }
     json([a: 5])
     json.person(name: "Tim", age: 35) { town "Manchester" }
+}
+
+get('/j1') {
+    json([a: 5])
+}
+
+get('/j2') {
+    json.person(name: "Tim", age: 35) { town "Manchester" }
+}
+
+get('/j3') {
+    json(1, 2, 3)
 }
 
 /**
@@ -58,17 +74,22 @@ req('h') {
     html.p('html content  ')
 }
 //redirect
-get('/r'){
+get('/r') {
     flash.message = "测试 flash 作用域，message"
     redirect('/')
 }
 
-get('accept'){
+get('accept') {
     println(accept('json'))
     println(accept('xml'))
     println(accept('html'))
     println(accept('text'))
-    println(accept(['json','html']))
+    println(accept(['json', 'html']))
+}
+
+get('/contentJson') {
+    println(params)
+    render params
 }
 
 //拦截器
@@ -80,7 +101,6 @@ before {
 after {
     log.info("after interceptor,${(System.nanoTime() - request.beforeAt) / 1000000} ms")
 }
-
 
 
 // new GraceServer().start()
