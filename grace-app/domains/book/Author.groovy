@@ -6,7 +6,7 @@ import groovy.transform.ToString
 /**
  * Author
  */
-@ToString(includeNames = true, excludes = ['errors'])
+@ToString(includeNames = true, excludes = ['errorList'])
 class Author implements Entity<Author> {
     long id //must,long or String
     String name
