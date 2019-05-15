@@ -15,6 +15,8 @@ def allControllers = publicControllers + adminControllers
 before('/**', Interceptor.ORDER_HIGH) {
     log.info("access check ${request.requestURI}")
 
+    // dumpInfos()
+
     if (!(controllerName in allControllers)){
         log.info("No Controller for ${controllerName} !")
         render("No Controller for ${controllerName} !")
