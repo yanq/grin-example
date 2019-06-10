@@ -95,3 +95,12 @@ get('delete/@id') {
     redirect("../index")
 }
 
+get('map'){
+    Book book = Book.get(2048)
+    println(book)
+    book.fetch()
+    json(){
+        success true
+        data book.toMap(['publishAt','author.createAt'])
+    }
+}

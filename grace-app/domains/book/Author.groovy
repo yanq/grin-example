@@ -22,5 +22,10 @@ class Author implements Entity<Author> {
     String toString() {
         return name
     }
+
+    @Override
+    Map toMap(List<String> excludes) {
+        return [name: name]
+    }
 }
 
