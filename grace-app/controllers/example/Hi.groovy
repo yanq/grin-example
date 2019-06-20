@@ -15,6 +15,10 @@ get('/') {
     def routes = Routes.routes.findAll {
         it.method in [Routes.METHOD_GET, Routes.METHOD_ALL] && !it.path.contains('@') && !it.path.contains('*')
     }
+
+    println(g.link('/abc'))
+    println(g.link('/abc',[a:5]))
+
     render('/index', [routes: routes])
 }
 
