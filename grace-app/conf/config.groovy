@@ -43,3 +43,5 @@ environments {
         name = "Grace Prod"
     }
 }
+
+json.dateFormat = 'yyyy'

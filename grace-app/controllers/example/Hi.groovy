@@ -106,5 +106,9 @@ after {
     log.info("after interceptor,${(System.nanoTime() - request.beforeAt) / 1000000} ms")
 }
 
+get('date'){
+    json([date:new Date()])
+}
+
 
 // new GraceServer().start()
