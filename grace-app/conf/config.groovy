@@ -26,10 +26,10 @@ environments {
         fileUpload.location = 'd:/temp/uploads'
 
         dataSource {
-            url = "jdbc:mysql://localhost/grace"
-            driverClassName = "com.mysql.jdbc.Driver"
-            username = "root"
-            password = 'mysql'
+            url = "jdbc:postgresql:grace_dev"
+            driverClassName = "org.postgresql.Driver"
+            username = ""
+            password = ''
             initialSize = 5
             minIdle = 5
             maxWait = 5000

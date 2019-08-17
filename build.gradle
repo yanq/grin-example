@@ -39,7 +39,7 @@ dependencies {
     compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
     
     compile 'com.alibaba:druid:1.1.10'
-    runtime "mysql:mysql-connector-java:5.1.38"
+    compile 'org.postgresql:postgresql:42.2.5'
 
     runtime 'org.slf4j:slf4j-api:1.7.22'
     runtime 'ch.qos.logback:logback-classic:1.2.1'

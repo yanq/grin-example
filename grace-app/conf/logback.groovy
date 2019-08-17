@@ -25,3 +25,4 @@ appender("CONSOLE", ConsoleAppender) {
 root(INFO, ["CONSOLE"])
 logger('druid.sql', Level.ALL)
 logger('com.alibaba.druid', Level.ALL)
+logger('grace.datastore', Level.ALL)
