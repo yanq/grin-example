@@ -26,8 +26,8 @@ environments {
         fileUpload.location = 'd:/temp/uploads'
 
         dataSource {
-            url = "jdbc:postgresql:grace_dev"
             driverClassName = "org.postgresql.Driver"
+            url = "jdbc:postgresql:grace_dev"
             username = ""
             password = ''
             initialSize = 5
@@ -36,8 +36,10 @@ environments {
             //maxWaitThreadCount = 3 这是干嘛用的？
             validationQuery = 'select 1'
             useGlobalDataSourceStat = true
+            removeAbandoned = true
+            removeAbandonedTimeout = 10000
         }
-        // logSql = true
+         logSql = true
     }
     prod {
         name = "Grace Prod"
