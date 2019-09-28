@@ -15,9 +15,9 @@ get('index') {
     params.limit = params.limit ?: 10
     params.order = params.order ?: 'id desc'
 
-//    def list = Book.list(params,'id,author_id,title')
-    def list = Book.getAll([1],'id')
-//    def list = Book.where('id=?',[1],'id,author_id').list()
+    def list = Book.list(params, 'id,author_id,title')
+    list = Book.getAll([1], 'id')
+    list = Book.where('id=?', [1]).list([:], 'id,author_id')
     def count = Book.count()
 
     list.fetch()
@@ -26,7 +26,7 @@ get('index') {
 }
 
 get('show/@id') {
-    Book book = Book.get(params.id,'id,title')
+    Book book = Book.get(params.id, 'id,title')
 
     if (!book) {
         notFound()
@@ -97,12 +97,12 @@ get('delete/@id') {
     redirect("../index")
 }
 
-get('map'){
+get('map') {
     Book book = Book.get(1)
     println(book)
     book.fetch()
-    json(){
+    json() {
         success true
-        data book.toMap(['publishAt','author.createAt'])
+        data book.toMap(['publishAt', 'author.createAt'])
     }
 }
