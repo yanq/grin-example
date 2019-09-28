@@ -15,4 +15,7 @@ create table book
     price      decimal,
     publish_at timestamp
 )
+
+alter table book add list varchar(1000);
+alter table book add map varchar(100);
 """

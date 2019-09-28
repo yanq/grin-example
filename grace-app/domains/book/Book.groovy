@@ -13,6 +13,8 @@ class Book implements Entity<Book> {
     String title
     String type
     BigDecimal price
+    List list
+    Map map
     Date publishAt = new Date()
 
     static transients = ['config']

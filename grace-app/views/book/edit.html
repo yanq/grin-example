@@ -45,6 +45,22 @@
     <small id="priceHelp" class="form-text text-muted">价格介于 1.0 到 10.0 之间</small>
 </div>
 <div class="form-group">
+    <label for="list">list</label>
+    
+    <input type="text" name="list" th:value="${book.list}" class="form-control" id="list"
+           aria-describedby="listHelp" placeholder="Enter list">
+    
+    <small id="listHelp" class="form-text text-muted"></small>
+</div>
+<div class="form-group">
+    <label for="map">map</label>
+    
+    <input type="text" name="map" th:value="${book.map}" class="form-control" id="map"
+           aria-describedby="mapHelp" placeholder="Enter map">
+    
+    <small id="mapHelp" class="form-text text-muted"></small>
+</div>
+<div class="form-group">
     <label for="publishAt">publishAt</label>
     
     <input type="datetime" name="publishAt" th:value="${book.publishAt}" class="form-control" id="publishAt"

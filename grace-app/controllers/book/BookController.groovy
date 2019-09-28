@@ -26,7 +26,7 @@ get('index') {
 }
 
 get('show/@id') {
-    Book book = Book.get(params.id, 'id,title')
+    Book book = Book.get(params.id)
 
     if (!book) {
         notFound()
