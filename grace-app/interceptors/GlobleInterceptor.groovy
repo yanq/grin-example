@@ -16,6 +16,8 @@ before('/**', Interceptor.ORDER_HIGH) {
     log.info("access check ${request.requestURI}")
 
     // dumpInfos()
+    def actions = ['index','map']
+    log.info("action start with ${actions} for ${request.requestURI} : ${actionStartWith(actions)}")
 
     if (!(controllerName in allControllers)){
         log.info("No Controller for ${controllerName} !")
