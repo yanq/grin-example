@@ -1,7 +1,5 @@
 package grace.app
 
-import grace.app.GraceApp
-import grace.app.GraceServer
 import grace.generate.Generator
 
 /**
