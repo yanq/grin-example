@@ -29,9 +29,9 @@ environments {
 
         dataSource {
             driverClassName = "org.postgresql.Driver"
-            url = "jdbc:postgresql:gun_dev"
-            username = ""
-            password = ''
+            url = "jdbc:postgresql://localhost:5433/gun_dev"
+            username = "postgres"
+            password = 'pg@local'
             initialSize = 5
             minIdle = 5
             maxWait = 5000
