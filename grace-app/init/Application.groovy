@@ -1,6 +1,6 @@
-import grace.app.GraceServer
 import groovy.util.logging.Slf4j
 import gun.app.GraceApp
+import gun.app.GraceServer
 
 /**
  * 启动
@@ -9,8 +9,7 @@ import gun.app.GraceApp
 @Slf4j
 class Application {
     public static void main(String[] args) {
-        GraceApp.setRootAndEnv(new File('grace-example'), GraceApp.ENV_DEV)
-        new GraceServer().startApp()
-        // InvokerHelper.runScript(HiSimple)
+        GraceApp.init() // 这里是为了初始化一下，如果不的话，会在第一次用到这个的时候初始化
+        new GraceServer().start()
     }
 }

@@ -1,0 +1,75 @@
+#!/bin/bash
+# run app
+
+#show usage
+function show_usage {
+    echo "Usage : help|clean|map|logs|rlogs|start|update"
+    exit 1
+}
+
+#log
+function log {
+    echo "`date +%Y%m%d%H%M%S` $1"
+}
+
+# kill all java
+function clean {
+    log "kill all java processes ..."
+    ps -A | grep java | awk '{print $1}' | while read jid;
+    do
+        echo find java id $jid to kill
+        kill -9 $jid
+    done
+}
+
+#jmap
+function map {
+    log "jmap ..."
+    ps -A | grep java | awk '{print $1}' | while read jid;
+    do
+        echo find java id $jid to to jmap
+        jmap -heap $jid
+    done
+}
+
+#tail logs
+function logs {
+    log "tail all logs ..."
+    tail -f ../logs/*
+}
+
+#start app
+function start_app {
+    log "start app ..."
+    export JAVA_OPTS="-Xms100m -Xmx200m"
+    nohup ./grace run prod > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
+}
+
+#update
+function update {
+    clean
+    git pull
+    ./gradlew prepare
+    clean
+    start_app
+}
+
+
+#run script
+log "Start tools，export java and args : $* "
+#project_dir="/root/app/luofans"
+#cd $project_dir
+export JAVA_HOME=/root/app/java
+export PATH=$PATH:${JAVA_HOME}/bin:/root/app/ffmpeg
+
+
+case $1 in
+    help) show_usage;;
+    clean) clean;;
+    map) map;;
+    logs) logs;;
+    rlogs) rlogs;;
+    start)  start_app;;
+    update) update;;
+    *)  show_usage;;
+esac

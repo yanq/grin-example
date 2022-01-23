@@ -1,31 +1,15 @@
 plugins {
-    // id 'com.github.johnrengelman.shadow' version '4.0.4'
     id 'com.bertramlabs.asset-pipeline' version '3.0.6'
     id 'java'
     id 'groovy'
-    // id 'application'
+    id 'application'
 }
-// buildscript {
-//     repositories {
-//         maven {
-//             url "https://plugins.gradle.org/m2/"
-//         }
-//     }
-//     dependencies {
-//         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.0.5"
-//     }
-// }
-//
-// apply plugin: "com.bertramlabs.asset-pipeline"
-// apply plugin: 'java'
-// apply plugin: 'groovy'
-// apply plugin: 'application'
 
 group 'xyz.itbang'
 version '0.1'
 
 sourceCompatibility = 1.8
-// mainClassName = ""
+mainClassName = "Application"
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -37,7 +21,7 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.5.4'
     compile 'io.undertow:undertow-servlet:2.0.13.Final'
     compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
-    
+
     compile 'com.alibaba:druid:1.1.10'
     compile 'com.zaxxer:HikariCP:3.3.1'
     compile 'org.postgresql:postgresql:42.2.5'
@@ -53,7 +37,6 @@ sourceSets {
         groovy {
             srcDir "grace-app/domains"
             srcDir "grace-app/controllers"
-            srcDir "grace-app/interceptors"
             srcDir "grace-app/views"
             srcDir "grace-app/scripts"
             srcDir "grace-app/init"
@@ -64,52 +47,36 @@ sourceSets {
     }
 }
 
-// jar {
-//
-//     from {
-//         //添加依懒到打包文件
-//         //configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-//         configurations.runtime.collect{zipTree(it)}
-//     }
-//     manifest {
-//         attributes 'Main-Class': Application
-//     }
-// }
-
-// shadowJar{
-//     mergeServiceFiles()
-//     mergeGroovyExtensionModules()
-// }
 
 //相当于 grace 命令，接收命令并执行
 task grace(type: JavaExec) {
-    group 'grace'
+    group 'gun'
     setStandardInput(System.in)
     jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
-    main = 'grace.app.GraceMain'
+    main = 'gun.app.GraceMain'
 }
 
 //启动服务
 task runApp(type: JavaExec) {
-    group 'grace'
+    group 'gun'
     // jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
-    main = 'grace.app.GraceMain'
+    main = 'gun.app.GraceMain'
     args 'run'
     // println("命令："+commandLine.join(' '))
 }
 
 // 运行 grace 命令之前的准备，主要是编译和处理依赖
 task prepare(type: Copy) {
-    dependsOn classes,assetCompile
-    group 'grace'
-    into "$buildDir/grace"
+    dependsOn classes, assetCompile
+    group 'gun'
+    into "$buildDir/gun"
     from sourceSets.main.runtimeClasspath
 }
 
 assets {
-    assetsPath = "grace-app/assets"
+    assetsPath = "gun-app/assets"
     // includes = []
     // excludes = ['**/*.less'] //Example Exclude GLOB pattern
     // from '/vendor/lib'
