@@ -1,4 +1,4 @@
-import gun.controller.Interceptor
+import gun.web.Interceptor
 
 class AccessInterceptor extends Interceptor{
 }

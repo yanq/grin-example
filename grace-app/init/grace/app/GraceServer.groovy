@@ -2,7 +2,7 @@ package grace.app
 
 import groovy.util.logging.Slf4j
 import gun.app.GraceApp
-import gun.servlet.GraceServlet
+import gun.web.GraceServlet
 import io.undertow.Undertow
 import io.undertow.servlet.Servlets
 import io.undertow.servlet.api.DeploymentInfo

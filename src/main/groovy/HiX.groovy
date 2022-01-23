@@ -1,5 +1,5 @@
 import book.Book
-import gun.datastore.entity.Entity
+import gun.datastore.Entity
 
 /**
  * 测试用

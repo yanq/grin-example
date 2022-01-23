@@ -1,4 +1,4 @@
-import gun.controller.Controller
+import gun.web.Controller
 
 class HomeController extends Controller{
 
