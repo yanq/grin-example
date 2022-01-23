@@ -17,8 +17,8 @@ repositories {
 }
 
 dependencies {
-    // compile project(':gun')
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile project(':gun')
+    // compile fileTree(dir: 'libs', include: '*.jar')
     compile 'org.codehaus.groovy:groovy-all:2.5.4'
     compile 'io.undertow:undertow-servlet:2.0.13.Final'
     compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
