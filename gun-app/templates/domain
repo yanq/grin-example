@@ -1,6 +1,6 @@
 ${ packageName ? "package " + packageName : '' }
 
-import grace.datastore.entity.Entity
+import gun.datastore.entity.Entity
 
 /**
  * ${simpleName}

@@ -1,6 +1,6 @@
 ${ packageName ? "package " + packageName : '' }
 
-import static grace.route.Routes.*
+import static gun.route.Routes.*
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 Logger log = LoggerFactory.getLogger(this.class)
@@ -11,5 +11,5 @@ Logger log = LoggerFactory.getLogger(this.class)
  */
 
 get('index') {
-    render "你好,Grace !"
+    render "你好,Gun !"
 }

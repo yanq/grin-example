@@ -3,7 +3,7 @@
 
 #show usage
 function show_usage {
-    echo "Usage : help|clean|map|logs|rlogs|start|update"
+    echo "Usage : help|clean|map|logs|start|update"
     exit 1
 }
 
@@ -42,7 +42,7 @@ function logs {
 function start_app {
     log "start app ..."
     export JAVA_OPTS="-Xms100m -Xmx200m"
-    nohup ./grace run prod > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
+    nohup ./gun run prod > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
 }
 
 #update
@@ -68,7 +68,6 @@ case $1 in
     clean) clean;;
     map) map;;
     logs) logs;;
-    rlogs) rlogs;;
     start)  start_app;;
     update) update;;
     *)  show_usage;;

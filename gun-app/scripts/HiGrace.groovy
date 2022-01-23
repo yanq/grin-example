@@ -1,16 +1,16 @@
 import groovy.json.JsonOutput
 
 /**
- * 测试 Grace
+ * 测试 Gun
  */
 
-//GraceApp.setRootAndEnv(new File('/Users/yanq/IdeaProjects/grace-dev/grace-example'))
+//GunApp.setRootAndEnv(new File('/Users/yanq/IdeaProjects/gun-dev/gun-example'))
 
 //Properties props = new Properties();
 //props.setProperty("dataSourceClassName", "org.postgresql.ds.PGSimpleDataSource");
 //props.setProperty("dataSource.user", "yanq");
 //props.setProperty("dataSource.password", "");
-//props.setProperty("dataSource.databaseName", "grace_dev");
+//props.setProperty("dataSource.databaseName", "gun_dev");
 //props.put("dataSource.logWriter", new PrintWriter(System.out));
 //
 //HikariConfig config = new HikariConfig(props);

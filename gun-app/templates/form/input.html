@@ -1,10 +1,10 @@
 <div class="form-group">
     <label for="${propName}">${propName}</label>
     <%if(constraints?.size?.containsWithinBounds(500)){%>
-    <textarea name="${propName}" th:text="\${${grace.util.ClassUtil.propertyName(entityClass)}.${propName}}" class="form-control" id="${propName}"
+    <textarea class="form-control" id="${propName}" name="${propName}" th:text="\${${gun.util.ClassUtil.propertyName(entityClass)}.${propName}}"
               aria-describedby="${propName}Help" placeholder="Enter ${propName}" rows="10"></textarea>
     <%}else{%>
-    <input type="${propType}" name="${propName}" th:value="\${${grace.util.ClassUtil.propertyName(entityClass)}.${propName}}" class="form-control" id="${propName}"
+    <input class="form-control" id="${propName}" name="${propName}" th:value="\${${gun.util.ClassUtil.propertyName(entityClass)}.${propName}}" type="${propType}"
            aria-describedby="${propName}Help" placeholder="Enter ${propName}">
     <%}%>
     <small id="${propName}Help" class="form-text text-muted">${constraints?.comment ?: ''}</small>

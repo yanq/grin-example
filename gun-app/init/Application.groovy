@@ -1,6 +1,6 @@
 import groovy.util.logging.Slf4j
-import gun.app.GraceApp
-import gun.app.GraceServer
+import gun.app.GunApp
+import gun.app.GunServer
 
 /**
  * 启动
@@ -9,7 +9,7 @@ import gun.app.GraceServer
 @Slf4j
 class Application {
     public static void main(String[] args) {
-        GraceApp.init() // 这里是为了初始化一下，如果不的话，会在第一次用到这个的时候初始化
-        new GraceServer().start()
+        GunApp.init() // 这里是为了初始化一下，如果不的话，会在第一次用到这个的时候初始化
+        new GunServer().start()
     }
 }

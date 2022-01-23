@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label for="${propName}">${propName} select</label>
+    <select class="form-control" name="${propName}" id="${propName}">
+        <%
+        constraints.inList.each {
+        out << "
+        <option th:selected=\"\${${gun.util.ClassUtil.propertyName(entityClass)}.${propName} value='${it}'
+        == '${it}'}\">${it}</option>  "
+        }
+        %>
+    </select>
+</div>

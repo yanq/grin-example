@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
     <head>
-        <title>create ${propertyName}</title>
+        <title>edit ${propertyName}</title>
     </head>
 
     <body>
-        <h1>create ${propertyName}</h1>
+        <h1>edit ${propertyName}</h1>
 
         <th:block th:if="\${${propertyName}.errors.size()>0}">
             <p th:text="\${${propertyName}.errors}"></p>
         </th:block>
 
-        <form action="/${propertyName}/save" method="post">
+        <form action="/${propertyName}/update" method="post">
+            <input type="hidden" name="id" th:value="\${${propertyName}.id}">
             <%
-                out << grace.generate.FormGenerator.generateForm(entityClass)
+            out << gun.generate.FormGenerator.generateForm(entityClass)
             %>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -1,0 +1,2 @@
+#!/bin/bash
+java $JAVA_OPTS -classpath 'build/gun:build/gun/*' gun.app.GunMain $*

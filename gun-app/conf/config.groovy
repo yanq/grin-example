@@ -29,7 +29,7 @@ environments {
 
         dataSource {
             driverClassName = "org.postgresql.Driver"
-            url = "jdbc:postgresql:grace_dev"
+            url = "jdbc:postgresql:gun_dev"
             username = ""
             password = ''
             initialSize = 5
@@ -44,7 +44,7 @@ environments {
          logSql = true
     }
     prod {
-        name = "Grace Prod"
+        name = "Gun Prod"
     }
 }
 

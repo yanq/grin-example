@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compile project(':grace')
+    compile project(':gun')
     compile 'org.codehaus.groovy:groovy-all:2.5.4'
     compile 'io.undertow:undertow-servlet:2.0.13.Final'
     compile 'org.thymeleaf:thymeleaf:3.0.9.RELEASE'
@@ -35,26 +35,26 @@ dependencies {
 sourceSets {
     main {
         groovy {
-            srcDir "grace-app/domains"
-            srcDir "grace-app/controllers"
-            srcDir "grace-app/views"
-            srcDir "grace-app/scripts"
-            srcDir "grace-app/init"
+            srcDir "gun-app/domains"
+            srcDir "gun-app/controllers"
+            srcDir "gun-app/views"
+            srcDir "gun-app/scripts"
+            srcDir "gun-app/init"
         }
         resources {
-            srcDir "grace-app/conf"
+            srcDir "gun-app/conf"
         }
     }
 }
 
 
-//相当于 grace 命令，接收命令并执行
-task grace(type: JavaExec) {
+//相当于 gun 命令，接收命令并执行
+task gun(type: JavaExec) {
     group 'gun'
     setStandardInput(System.in)
     jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
-    main = 'gun.app.GraceMain'
+    main = 'gun.app.GunMain'
 }
 
 //启动服务
@@ -62,12 +62,12 @@ task runApp(type: JavaExec) {
     group 'gun'
     // jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
-    main = 'gun.app.GraceMain'
+    main = 'gun.app.GunMain'
     args 'run'
     // println("命令："+commandLine.join(' '))
 }
 
-// 运行 grace 命令之前的准备，主要是编译和处理依赖
+// 运行 gun 命令之前的准备，主要是编译和处理依赖
 task prepare(type: Copy) {
     dependsOn classes, assetCompile
     group 'gun'
