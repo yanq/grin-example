@@ -1,9 +1,8 @@
 package grace.app
 
-
-import grace.servlet.GraceServlet
-import grace.websocket.WebSocketEntry
 import groovy.util.logging.Slf4j
+import gun.app.GraceApp
+import gun.servlet.GraceServlet
 import io.undertow.Undertow
 import io.undertow.servlet.Servlets
 import io.undertow.servlet.api.DeploymentInfo
@@ -87,7 +86,7 @@ class GraceServer {
     private DeploymentInfo buildDeploymentInfo() {
 
         WebSocketDeploymentInfo webSockets = new WebSocketDeploymentInfo()
-        webSockets.addEndpoint(WebSocketEntry)
+        // webSockets.addEndpoint(WebSocketEntry)
 
         DeploymentInfo servletBuilder = Servlets.deployment()
                 .setClassLoader(GraceServer.class.getClassLoader())

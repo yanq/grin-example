@@ -1,7 +1,7 @@
 package book
 
-import grace.datastore.entity.Entity
 import groovy.transform.ToString
+import gun.datastore.entity.Entity
 
 /**
  * book

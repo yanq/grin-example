@@ -1,4 +1,4 @@
-import grace.controller.Controller
+import gun.controller.Controller
 
 class HomeController extends Controller{
 

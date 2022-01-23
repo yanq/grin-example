@@ -1,6 +1,7 @@
 package grace.app
 
-import grace.generate.Generator
+import gun.app.GraceApp
+import gun.generate.Generator
 
 /**
  * Grace 入口
