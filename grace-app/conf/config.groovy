@@ -1,3 +1,5 @@
+import grace.controller.Controller
+
 //config
 
 //server
@@ -15,6 +17,8 @@ fileUpload.fileSizeThreshold = 0
 //文件处理 URI
 assets.uri = '/assets'
 files.uri = '/files' //静态文件
+// 处理错误的控制器类
+// errorClass = Controller.class
 //views
 views.notFound = '/notFound.html'
 views.error = '/error.html'

@@ -51,7 +51,6 @@ class GraceServer {
         if (app.config.fileUpload.fileSizeThreshold) this.fileSizeThreshold = app.config.fileUpload.fileSizeThreshold
 
         def d = buildDeploymentInfo()
-        app.init(d) //应用初始化内容
         startUndertowServer(d)
     }
 
