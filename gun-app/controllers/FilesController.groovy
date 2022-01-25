@@ -6,12 +6,12 @@ class FilesController extends Controller {
      * asset
      * 需要路由定义配合 /asset/@file
      */
-    void asset() {
+    void assets() {
         File assetFile
         if (app.isDev()) {
-            assetFile = new File(app.assetDir, params.file)
+            assetFile = new File(app.assetDir, params.id)
         } else {
-            assetFile = new File(app.assetBuildDir, params.file)
+            assetFile = new File(app.assetBuildDir, params.id)
         }
 
         render(assetFile)
