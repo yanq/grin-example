@@ -5,15 +5,11 @@
     </head>
     <body>
         <section class="jumbotron text-center m-auto">
-            <h1 class="jumbotron-heading">Album example</h1>
+            <h1 class="jumbotron-heading">Hello, Gun!</h1>
             <p class="text-danger" th:if="${flash.message}" th:text="${flash.message}"></p>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the
-                creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it
-                entirely.</p>
-            <h2>Routes:</h2>
-            <th:block th:each="route : ${routes}">
-                <a href="#" class="btn btn-primary my-2" th:href="${route.path}" th:text="${route.path}">Main call to action</a>
-            </th:block>
+            <p class="lead text-muted">
+                a new groovy web framework.
+            </p>
         </section>
     </body>
 </html>
