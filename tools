@@ -49,6 +49,7 @@ function start_app {
 function update {
     clean
     git pull
+    ./gradlew clean
     ./gradlew prepare
     clean
     start_app
