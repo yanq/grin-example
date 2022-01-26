@@ -1,75 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
-<head>
-    <title>create book</title>
-</head>
+    <head>
+        <title>create book</title>
+    </head>
 
-<body>
-<h1>create book</h1>
+    <body>
+        <h1>create book</h1>
 
-<th:block th:if="${book.errors.size()>0}">
-    <p th:text="${book.errors}"></p>
-</th:block>
+        <th:block th:if="${book.errors.size()>0}">
+            <p th:text="${book.errors}"></p>
+        </th:block>
 
-<form action="/book/save" method="post">
-    <div class="form-group">
-        <label for="authorId">author select</label>
-        <select class="form-control" id="authorId" name="authorId">
-            <option value=''>请选择</option>
-            <option th:each="author:${authorList}" th:selected="${book.author} ? ${author.id == book.author.id}"
-                    th:text="${author}"
-                    th:value='${author.id}'>选项 X
-            </option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="title">title</label>
-
-        <input aria-describedby="titleHelp" class="form-control" id="title" name="title" placeholder="Enter title"
-               th:value="${book.title}" type="text">
-
-        <small class="form-text text-muted" id="titleHelp">字符串长度要处于 1 到 100 之间</small>
-    </div>
-    <div class="form-group">
-        <label for="type">type select</label>
-        <select class="form-control" id="type" name="type">
-            <option th:selected="${book.type=='语文'}" value='语文'>语文</option>
-            <option th:selected="${book.type=='数学'}" value='数学'>数学</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="price">price</label>
-
-        <input aria-describedby="priceHelp" class="form-control" id="price" name="price" placeholder="Enter price"
-               th:value="${book.price}" type="text">
-
-        <small class="form-text text-muted" id="priceHelp">价格介于 1.0 到 10.0 之间</small>
-    </div>
-    <div class="form-group">
-        <label for="list">list</label>
-
-        <input aria-describedby="listHelp" class="form-control" id="list" name="list" placeholder="Enter list"
-               th:value="${book.list}" type="text">
-
-        <small class="form-text text-muted" id="listHelp"></small>
-    </div>
-    <div class="form-group">
-        <label for="map">map</label>
-
-        <input aria-describedby="mapHelp" class="form-control" id="map" name="map" placeholder="Enter map"
-               th:value="${book.map}" type="text">
-
-        <small class="form-text text-muted" id="mapHelp"></small>
-    </div>
-    <div class="form-group">
-        <label for="publishAt">publishAt</label>
-
-        <input aria-describedby="publishAtHelp" class="form-control" id="publishAt" name="publishAt" placeholder="Enter publishAt"
-               th:value="${book.publishAt}" type="datetime">
-
-        <small class="form-text text-muted" id="publishAtHelp"></small>
-    </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
-</form>
-</body>
+        <form action="/book/save" method="post">
+            <div class="mb-3">
+    <label for="authorId" class="form-label">author select</label>
+    <select class="form-control" name="authorId" id="authorId">
+        <option value=''>请选择</option>
+        <option th:value='${author.id}' th:each="author:${authorList}"
+                th:selected="${book.author} ? ${author.id == book.author.id}"
+                th:text="${author}">选项 X</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label for="title" class="form-label">title</label>
+    
+    <input class="form-control" id="title" name="title" th:value="${book.title}" type="text"
+           aria-describedby="titleHelp" placeholder="Enter title">
+    
+    <div id="titleHelp" class="form-text">字符串长度要处于 1 到 100 之间</div>
+</div>
+<div class="mb-3">
+    <label for="type" class="form-label">type select</label>
+    <select class="form-control" name="type" id="type">
+        <option th:selected="${book.type=='语文'}" value='语文'>语文</option><option th:selected="${book.type=='数学'}" value='数学'>数学</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label for="price" class="form-label">price</label>
+    
+    <input class="form-control" id="price" name="price" th:value="${book.price}" type="text"
+           aria-describedby="priceHelp" placeholder="Enter price">
+    
+    <div id="priceHelp" class="form-text">价格介于 1.0 到 10.0 之间</div>
+</div>
+<div class="mb-3">
+    <label for="publishAt" class="form-label">publishAt</label>
+    
+    <input class="form-control" id="publishAt" name="publishAt" th:value="${book.publishAt}" type="datetime"
+           aria-describedby="publishAtHelp" placeholder="Enter publishAt">
+    
+    <div id="publishAtHelp" class="form-text"></div>
+</div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </body>
 </html>
