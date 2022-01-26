@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
     <h1 class="h2">book list</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-        <a class="btn btn-sm btn-outline-secondary" href="/book/create"> 新建 </a>
+        <a class="btn btn-sm btn-outline-secondary" href="create"> 新建 </a>
     </div>
 </div>
 <table class="table table-bordered">
@@ -31,6 +31,7 @@
             <p><span th:text="list"></span>:<span class="ml-3" th:text="${book.list}"></span></p>
             <p><span th:text="map"></span>:<span class="ml-3" th:text="${book.map}"></span></p>
             <p><span th:text="publishAt"></span>:<span class="ml-3" th:text="${book.publishAt}"></span></p>
+
         </td>
         <td class="text-center">
             <a href="#" th:href="|edit/${book.id}|">修改</a>

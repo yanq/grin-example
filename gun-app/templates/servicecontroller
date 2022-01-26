@@ -1,17 +1,16 @@
 ${ packageName ? "package " + packageName : '' }
 
-import static gun.route.Routes.*
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
-Logger log = LoggerFactory.getLogger(this.class)
+import groovy.util.logging.Slf4j
+import gun.web.Controller
 
 /**
  * ${simpleName}
  * something about this controller
  */
 
-get('index') {
+@Slf4j
+class ${simpleName}ServiceController extends Controller {
+    def index() {
     params.limit = params.limit ? params.limit.toInteger() : 10
     params.order = params.order ?: 'id desc'
 
@@ -23,7 +22,7 @@ get('index') {
     json([list:list.collect{it.toMap()}, count: count])
 }
 
-get('show/@id') {
+    def show() {
     ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
     if (!${propertyName}) {
@@ -36,7 +35,7 @@ get('show/@id') {
     json(${propertyName}.toMap())
 }
 
-post('save') {
+    def save() {
     ${simpleName} ${propertyName} = ${simpleName}.from(params)
     ${propertyName}.validate()
 
@@ -61,7 +60,7 @@ post('save') {
     }
 }
 
-get('edit/@id') {
+    def edit() {
     ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
     if (!${propertyName}) {
@@ -72,7 +71,7 @@ get('edit/@id') {
     json(${propertyName}.toMap())
 }
 
-post('update') {
+    def update() {
     ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
     if (!${propertyName}) {
@@ -104,9 +103,9 @@ post('update') {
     }
 }
 
-get('delete/@id') {
+    def delete() {
     ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
     ${propertyName}.delete()
     json([success: true, message: '删除成功'])
 }
-
+}

@@ -1,49 +1,47 @@
 ${ packageName ? "package " + packageName : '' }
 
-import static gun.route.Routes.*
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
-Logger log = LoggerFactory.getLogger(this.class)
+import groovy.util.logging.Slf4j
+import gun.web.Controller
 
 /**
  * ${simpleName}
  * something about this controller
  */
-
-get('index') {
-    params.limit = params.limit ? params.limit.toInteger() : 10
-    params.order = params.order ?: 'id desc'
+@Slf4j
+class ${simpleName}Controller extends Controller {
+    def index() {
+        params.limit = params.limit ? params.limit.toInteger() : 10
+        params.order = params.order ?: 'id desc'
 
     def list = ${simpleName}.list(params)
     def count = ${simpleName}.count()
 
     list.fetch()
 
-    render('index', [list: list, count: count])
-}
+        render('index', [list: list, count: count])
+    }
 
-get('show/@id') {
-    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
+    def show() {
+        ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
     if (!${propertyName}) {
         notFound()
         return
     }
 
-    ${propertyName}.fetch()
+        ${propertyName}.fetch()
 
-    render('show', [${propertyName}: ${propertyName}])
-}
+        render('show', [${propertyName}: ${propertyName}])
+    }
 
-get('create') {
-    ${simpleName} ${propertyName} = ${simpleName}.from(params)
-    render('create', [${propertyName}: ${propertyName}])
-}
+    def create() {
+        ${simpleName} ${propertyName} = ${simpleName}.from(params)
+        render('create', [${propertyName}: ${propertyName}])
+    }
 
-post('save') {
-    ${simpleName} ${propertyName} = ${simpleName}.from(params)
-    ${propertyName}.validate()
+    def save() {
+        ${simpleName} ${propertyName} = ${simpleName}.from(params)
+        ${propertyName}.validate()
 
     if (${propertyName}.errors) {
         render('create', [${propertyName}: ${propertyName}])
@@ -56,27 +54,27 @@ post('save') {
     }
 }
 
-get('edit/@id') {
-    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
+    def edit() {
+        ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
-    if (!${propertyName}) {
-        notFound()
-        return
+        if (!${propertyName}) {
+            notFound()
+            return
+        }
+
+        render('edit', [${propertyName}: ${propertyName}])
     }
 
-    render('edit', [${propertyName}: ${propertyName}])
-}
+    def update() {
+        ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
-post('update') {
-    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
+        if (!${propertyName}) {
+            notFound()
+            return
+        }
 
-    if (!${propertyName}) {
-        notFound()
-        return
-    }
-
-    ${propertyName}.bind(params)
-    ${propertyName}.validate()
+        ${propertyName}.bind(params)
+        ${propertyName}.validate()
 
     if (${propertyName}.errors) {
         render('edit', [${propertyName}: ${propertyName}])
@@ -89,9 +87,11 @@ post('update') {
     }
 }
 
-get('delete/@id') {
-    ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
-    ${propertyName}.delete()
-    redirect("../index")
+    def delete() {
+        ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
+        ${propertyName}.delete()
+        redirect("../index")
+    }
 }
+
 
