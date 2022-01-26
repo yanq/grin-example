@@ -10,6 +10,8 @@ import gun.app.GunServer
 class Application {
     public static void main(String[] args) {
         GunApp.init() // 这里是为了初始化一下，如果不的话，会在第一次用到这个的时候初始化
-        new GunServer().start()
+        def server = new GunServer()
+        if (GunApp.instance.config.fileUpload.location) server.uploadLocation = GunApp.instance.config.fileUpload.location
+        server.start()
     }
 }

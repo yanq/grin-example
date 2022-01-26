@@ -1,5 +1,11 @@
+import groovy.util.logging.Slf4j
 import gun.web.Controller
+import gun.web.LinkUtil
 
+/**
+ * 文件处理
+ */
+@Slf4j
 class FilesController extends Controller {
 
     /**
@@ -21,8 +27,9 @@ class FilesController extends Controller {
      * 文件上传
      * @return
      */
-    List upload() {
+    void upload() {
         List fileNames = []
+
         request.parts.each {
             if (it.submittedFileName) {
                 String fileName = fileUUIDName(it.submittedFileName)
@@ -30,17 +37,36 @@ class FilesController extends Controller {
                 fileNames << fileName
             }
         }
-        fileNames.collect { "${app.config.fileUpload.download ?: ''}/$it" }
+
+        def files = fileNames.collect { "/files/download/$it" }
+
+        //没有文件
+        if (!files) {
+            json(success: false, msg: 'no file')
+            return
+        }
+
+        log.info("upload files by ${session.user} : ${files}")
+
+        files = files.collect {
+            LinkUtil.absolute(it)
+        }
+
+        if (files.size() == 1) {
+            json(success: true, msg: 'ok', 'file': files[0])
+        } else {
+            json(success: true, msg: 'ok', 'files': files)
+        }
     }
 
     /**
      * 文件下载
      */
     void download() {
-        if (!params.file) {
+        if (!params.id) {
             notFound()
         } else {
-            render(new File("${app.config.fileUpload.location ?: ''}", params.file))
+            render(new File("${app.config.fileUpload.location}/${params.id}"))
         }
     }
 

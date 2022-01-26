@@ -1,31 +1,18 @@
-//config
-
-//server
-server.host = 'localhost'
-server.port = 8080
-server.context = '/'
+// config
 
 // 文件上传
-fileUpload.upload = '/upload'
-fileUpload.download = '/uploads'
 fileUpload.location = '/temp/uploads'
-fileUpload.maxFileSize = -1L
-fileUpload.maxRequestSize = -1L
-fileUpload.fileSizeThreshold = 0
-//文件处理 URI
-assets.uri = '/assets'
-files.uri = '/files' //静态文件
 // 处理错误的控制器类
 // errorClass = Controller.class
-//views
+// views
 views.notFound = '/notFound.html'
 views.error = '/error.html'
 
-//environments
+// environments
 environments {
     dev {
-        //重设 location
-        fileUpload.location = 'd:/temp/uploads'
+        serverURL = "http://localhost:8080"
+        fileUpload.location = '/Volumes/data/dev/uploads'
 
         dataSource {
             driverClassName = "org.postgresql.Driver"
