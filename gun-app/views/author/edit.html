@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
+    <head>
+        <title>edit author</title>
+    </head>
+
+    <body>
+        <h1>edit author</h1>
+
+        <th:block th:if="${author.errors.size()>0}">
+            <p th:text="${author.errors}"></p>
+        </th:block>
+
+        <form action="/author/update" method="post">
+            <input type="hidden" name="id" th:value="${author.id}">
+            <div class="form-group">
+    <label for="name">name</label>
+    
+    <input class="form-control" id="name" name="name" th:value="${author.name}" type="text"
+           aria-describedby="nameHelp" placeholder="Enter name">
+    
+    <small id="nameHelp" class="form-text text-muted">字符串长度要处于 1 到 5 之间</small>
+</div>
+<div class="form-group">
+    <label for="createAt">createAt</label>
+    
+    <input class="form-control" id="createAt" name="createAt" th:value="${author.createAt}" type="datetime"
+           aria-describedby="createAtHelp" placeholder="Enter createAt">
+    
+    <small id="createAtHelp" class="form-text text-muted"></small>
+</div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </body>
+</html>

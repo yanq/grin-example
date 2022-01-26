@@ -1,5 +1,5 @@
-<div class="form-group">
-    <label for="${propName}Id">${propName} select</label>
+<div class="mb-3">
+    <label for="${propName}Id" class="form-label">${propName} select</label>
     <select class="form-control" name="${propName}Id" id="${propName}Id">
         <option value=''>请选择</option>
         <option th:value='\${${propName}.id}' th:each="${propName}:\${${propName}List}"

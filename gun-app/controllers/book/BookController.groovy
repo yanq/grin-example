@@ -1,7 +1,6 @@
 package book
 
 import groovy.util.logging.Slf4j
-import gun.datastore.EntityFetch
 import gun.web.Controller
 
 /**
@@ -17,7 +16,7 @@ class BookController extends Controller {
         def list = Book.list(params)
         def count = Book.count()
 
-        EntityFetch.fetchList(list)
+        list.fetch()
 
         render('index', [list: list, count: count])
     }
@@ -37,7 +36,7 @@ class BookController extends Controller {
 
     def create() {
         Book book = Book.from(params)
-        render('create', [book: book])
+        render('create', [book: book,authorList:Author.list()])
     }
 
     def save() {

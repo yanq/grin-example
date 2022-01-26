@@ -12,9 +12,7 @@ class Book implements Entity<Book> {
     Author author
     String title
     String type
-    BigDecimal price
-    List list
-    Map map
+    BigDecimal price = 0
     Date publishAt = new Date()
 
     static transients = ['config']
