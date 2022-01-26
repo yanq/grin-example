@@ -13,10 +13,10 @@ class ${simpleName}Controller extends Controller {
         params.limit = params.limit ? params.limit.toInteger() : 10
         params.order = params.order ?: 'id desc'
 
-    def list = ${simpleName}.list(params)
-    def count = ${simpleName}.count()
+        def list = ${simpleName}.list(params)
+        def count = ${simpleName}.count()
 
-    list.fetch()
+        list.fetch()
 
         render('index', [list: list, count: count])
     }
@@ -24,10 +24,10 @@ class ${simpleName}Controller extends Controller {
     def show() {
         ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
-    if (!${propertyName}) {
-        notFound()
-        return
-    }
+        if (!${propertyName}) {
+            notFound()
+            return
+        }
 
         ${propertyName}.fetch()
 
@@ -43,16 +43,16 @@ class ${simpleName}Controller extends Controller {
         ${simpleName} ${propertyName} = ${simpleName}.from(params)
         ${propertyName}.validate()
 
-    if (${propertyName}.errors) {
-        render('create', [${propertyName}: ${propertyName}])
-    } else {
-        if (${propertyName}.save()) {
-            redirect("show/\${${propertyName}.id}")
-        } else {
+        if (${propertyName}.errors) {
             render('create', [${propertyName}: ${propertyName}])
+        } else {
+            if (${propertyName}.save()) {
+                redirect("show/\${${propertyName}.id}")
+            } else {
+                render('create', [${propertyName}: ${propertyName}])
+            }
         }
     }
-}
 
     def edit() {
         ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
@@ -76,16 +76,16 @@ class ${simpleName}Controller extends Controller {
         ${propertyName}.bind(params)
         ${propertyName}.validate()
 
-    if (${propertyName}.errors) {
-        render('edit', [${propertyName}: ${propertyName}])
-    } else {
-        if (${propertyName}.save()) {
-            redirect("show/\${${propertyName}.id}")
-        } else {
+        if (${propertyName}.errors) {
             render('edit', [${propertyName}: ${propertyName}])
+        } else {
+            if (${propertyName}.save()) {
+                redirect("show/\${${propertyName}.id}")
+            } else {
+                render('edit', [${propertyName}: ${propertyName}])
+            }
         }
     }
-}
 
     def delete() {
         ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
