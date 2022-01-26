@@ -8,12 +8,12 @@ fileUpload.location = '/temp/uploads'
 views.notFound = '/notFound.html'
 views.error = '/error.html'
 
+serverURL = "http://localhost:8080"
+fileUpload.location = '/Volumes/data/dev/uploads'
+
 // environments
 environments {
     dev {
-        serverURL = "http://localhost:8080"
-        fileUpload.location = '/Volumes/data/dev/uploads'
-
         dataSource {
             driverClassName = "org.postgresql.Driver"
             url = "jdbc:postgresql://localhost:5433/gun_dev"
