@@ -73,11 +73,23 @@ class FilesController extends Controller {
     /**
      * 站点静态文件
      */
-    void files() {
-        if (!params.file) {
+    void 'static'() {
+        if (!params.id) {
             notFound()
+            return
+        }
+
+        def f = new File("${app.staticDir}/${params.id}")
+        if (f.isDirectory()) f = new File(f, 'index.html')
+        if (!f.exists()) {
+            notFound()
+            return
+        }
+
+        if (f.name.endsWith('.html')) {
+            render(f.text)
         } else {
-            render(new File(app.staticDir, params.file))
+            render(f)
         }
     }
 
