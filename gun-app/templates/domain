@@ -1,6 +1,6 @@
 ${ packageName ? "package " + packageName : '' }
 
-import gun.datastore.entity.Entity
+import gun.datastore.Entity
 
 /**
  * ${simpleName}
@@ -9,6 +9,8 @@ class ${simpleName} implements Entity< ${simpleName} > {
     long id //must,long or String
     String title
     Date publishAt = new Date()
+    Date dateCreated = new Date()
+    Date lastUpdated = new Date()
 
     static transients = []
     static mapping = [:]
