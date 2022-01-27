@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title th:replace="${title}">Layout Title</title>
-    [(${g.assetJs('application.js')})]
     [(${g.assetCss('front.css')})]
     <link rel="Shortcut Icon" th:href="${g.assetImg('favicon.ico')}">
 </head>
@@ -32,5 +31,6 @@
 <footer class="mt-auto bg-light py-4">
     <div class="container "><span class="text-muted">&copy; 2022</span></div>
 </footer>
+[(${g.assetJs('application.js')})]
 </body>
 </html>
