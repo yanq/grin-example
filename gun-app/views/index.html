@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
-    <head>
-        <title>首页</title>
-    </head>
-    <body>
-        <section class="jumbotron text-center m-auto">
-            <h1 class="jumbotron-heading">Gun</h1>
-            <p class="text-danger" th:if="${flash.message}" th:text="${flash.message}"></p>
-            <p class="lead text-muted">
-                a groovy web framework.
-            </p>
-        </section>
-    </body>
+<head>
+    <title>首页</title>
+</head>
+<body>
+<section class="jumbotron text-center m-auto">
+    <h1 class="jumbotron-heading">Gun</h1>
+    <p class="text-danger" th:if="${flash.message}" th:text="${flash.message}"></p>
+    <p class="lead text-muted">
+        a groovy web framework.
+    </p>
+    <p>
+        <img alt="公众号" th:src="${g.assetImg('me/gongzhonghao.jpg')}">
+        <img alt="公众号" th:src="${g.static('gongzhonghao.jpg')}">
+    </p>
+</section>
+</body>
 </html>

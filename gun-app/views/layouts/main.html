@@ -6,7 +6,7 @@
     <title th:replace="${title}">Layout Title</title>
     [(${g.assetJs('application.js')})]
     [(${g.assetCss('front.css')})]
-    <link href="/files/assets/images/favicon.ico" rel="Shortcut Icon">
+    <link rel="Shortcut Icon" th:href="${g.assetImg('favicon.ico')}">
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0 mb-4">
