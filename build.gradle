@@ -17,8 +17,8 @@ repositories {
 }
 
 dependencies {
-    // compile project(':gun')
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile project(':gun')
+    // compile fileTree(dir: 'libs', include: '*.jar')
     compile 'org.codehaus.groovy:groovy-all:2.5.15'
     compile 'io.undertow:undertow-servlet:2.2.14.Final'
     compile 'org.thymeleaf:thymeleaf:3.0.14.RELEASE'
@@ -33,6 +33,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.13.2'
 }
 
+// ---  Gun ---
 sourceSets {
     main {
         groovy {
@@ -48,8 +49,7 @@ sourceSets {
     }
 }
 
-
-//相当于 gun 命令，接收命令并执行
+//运行 Gun 提供的内部命令
 task gun(type: JavaExec) {
     group 'gun'
     setStandardInput(System.in)
@@ -58,33 +58,26 @@ task gun(type: JavaExec) {
     main = 'gun.app.GunMain'
 }
 
-//启动服务
-task runApp(type: JavaExec) {
-    group 'gun'
-    // jvmArgs('-Dfile.encoding=UTF-8')
-    classpath = sourceSets.main.runtimeClasspath
-    main = 'gun.app.GunMain'
-    args 'run'
-    // println("命令："+commandLine.join(' '))
-}
-
-// 运行 gun 命令之前的准备，主要是编译和处理依赖
+// 部署运行准备，把编译后的文件，放到特定文件夹下
 task prepare(type: Copy) {
-    dependsOn classes, assetCompile
     group 'gun'
+    dependsOn classes, assetCompile
     into "$buildDir/gun"
     from sourceSets.main.runtimeClasspath
 }
 
+// 复制 Gun 框架类库过来
 task copyLibs(type: Copy) {
     group 'gun'
     from '/Users/yan/projects/gun-dev/gun/build/libs/'
     into "libs"
 }
 
+// assets 配置
 assets {
     assetsPath = "gun-app/assets"
     // includes = []
     // excludes = ['**/*.less'] //Example Exclude GLOB pattern
     // from '/vendor/lib'
 }
+// --- Gun ---
