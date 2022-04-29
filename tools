@@ -1,5 +1,6 @@
 #!/bin/bash
-# run app
+
+# 部署环境的常用工具集
 
 #show usage
 function show_usage {
@@ -39,10 +40,11 @@ function logs {
 }
 
 #start app
+# windows cmd: java -Dfile.encoding=UTF-8 -classpath build/gun;build/gun/* gun.app.GunMain %*
 function start_app {
     log "start app ..."
     export JAVA_OPTS="-Xms100m -Xmx200m"
-    nohup ./gun run prod > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
+    nohup java $JAVA_OPTS -classpath 'build/gun:build/gun/*' gun.app.GunMain run prod > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
 }
 
 #update
