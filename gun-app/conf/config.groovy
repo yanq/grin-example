@@ -1,5 +1,8 @@
 // config
 
+// URL Mapping, key 为字符串，value 为内部 uri(/controllerName/actionName/id).
+urlMapping = ['/a': '/home']
+
 // 服务器
 // port 设置 -1 表示不启用
 server {
