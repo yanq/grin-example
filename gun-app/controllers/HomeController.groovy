@@ -7,4 +7,8 @@ class HomeController extends Controller {
         render('/index', [:])
         // render("abcde")
     }
+
+    def hello() {
+        render("Hello,${params.name ?: 'World'}!")
+    }
 }
