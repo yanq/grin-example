@@ -1,8 +1,9 @@
 // config
 
-// URL Mapping, key 为字符串，value 为内部 uri(/controllerName/actionName/id).
+// URL Mapping, key 为 url 表达式，value 为内部资源，controllerName-actionName
 urlMapping = [
         '/'                                   : 'home',
+        '/some-pre/hello'                     : 'home-hello',
         '/files/@actionName?/@id**?'          : 'files',
         '/@controllerName/?@actionName?/?@id?': '',
 ]
