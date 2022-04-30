@@ -1,3 +1,5 @@
+import websocket.WebSocketEntry
+
 // config
 
 // URL Mapping, key 为 url 表达式，value 为内部资源，controllerName-actionName
@@ -7,6 +9,8 @@ urlMapping = [
         '/files/@actionName?/@id**?'          : 'files',
         '/@controllerName/?@actionName?/?@id?': '',
 ]
+
+webSocketEntryList = [WebSocketEntry]
 
 // 服务器
 // port 设置 -1 表示不启用
