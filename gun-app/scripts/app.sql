@@ -1,7 +1,9 @@
-create table if not exists author
+create table author
 (
-    id        bigserial primary key,
-    name      varchar(5) unique,
+    id        bigserial
+        constraint author_pkey primary key,
+    name      varchar(5)
+        constraint author_name_key unique,
     create_at timestamp
 );
 
