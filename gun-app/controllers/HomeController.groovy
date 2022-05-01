@@ -1,7 +1,9 @@
 import gun.web.Controller
 
+import java.util.concurrent.atomic.AtomicLong
+
 class HomeController extends Controller {
-    def a = '1234'
+    static AtomicLong count = new AtomicLong()
 
     def index() {
         render('/index', [:])
@@ -9,6 +11,8 @@ class HomeController extends Controller {
     }
 
     def hello() {
-        render("Hello,${params.name ?: 'World'}!")
+        long c = count.getAndIncrement()
+        session.count = c
+        render("Hello,${params.name ?: 'World'}! ${c}")
     }
 }
