@@ -38,7 +38,7 @@ class Application {
      */
     void start() {
         WebSocketDeploymentInfo webSockets = new WebSocketDeploymentInfo()
-        GunApp.instance.controllers.websockets.each { webSockets.addEndpoint(it) }
+        GunApp.instance.websockets.each { webSockets.addEndpoint(it) }
         DeploymentInfo deploymentInfo = Servlets.deployment()
                 .setClassLoader(this.class.getClassLoader())
                 .setDefaultMultipartConfig(new MultipartConfigElement(uploadLocation, maxFileSize, maxRequestSize, fileSizeThreshold))
