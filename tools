@@ -40,11 +40,12 @@ function logs {
 }
 
 #start app
-# windows cmd: java -Dfile.encoding=UTF-8 -classpath build/gun;build/gun/* gun.app.GunMain %*
+# windows cmd: java -Dfile.encoding=UTF-8 -classpath build/gun;build/gun/* Application %*
 function start_app {
     log "start app ..."
     export JAVA_OPTS="-Xms100m -Xmx200m"
-    nohup java $JAVA_OPTS -classpath 'build/gun:build/gun/*' gun.app.GunMain run prod > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
+    export GUN_ENV="prod"
+    nohup java $JAVA_OPTS -classpath 'build/gun:build/gun/*' Application > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
 }
 
 #update
