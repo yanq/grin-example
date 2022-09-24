@@ -1,4 +1,4 @@
-
+package ws
 
 import groovy.util.logging.Slf4j
 import gun.web.HttpSessionConfigurator
@@ -8,7 +8,7 @@ import javax.websocket.*
 import javax.websocket.server.ServerEndpoint
 
 /**
- * WebSocketEntry
+ * ws.WebSocketEntry
  * 入口，也作示例
  * 如果这个不适合，可以在项目初始化时，替换掉。
  * 客户端测试代码：let ws = new WebSocket('ws://localhost:8080/ws'); ws.send('hi')

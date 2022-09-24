@@ -1,3 +1,5 @@
+import ws.WebSocketEntry
+
 // config
 
 // URL Mapping, key 为 url 表达式，value 为内部资源，controllerName-actionName
