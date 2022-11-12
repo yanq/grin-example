@@ -33,7 +33,7 @@ server {
 
 serverURL = "http://localhost:8080"
 
-// 处理错误的控制器类
+// 处理错误的控制器类（可选，默认用 Controller）
 // errorClass = Controller.class
 // views
 views.notFound = '/notFound.html'
