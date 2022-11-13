@@ -2,7 +2,7 @@
     <label for="${propName}" class="form-label">${propName} select</label>
     <select class="form-control" name="${propName}" id="${propName}">
         <%
-        constraints.inList.each {
+        constraints?.find {it.class.simpleName=='InList'}?.value.each {
         out << "<option th:selected=\"\${${gun.generate.ClassUtil.propertyName(entityClass)}.${propName}=='${it}'}\" value='${it}'>${it}</option>"
         }
         %>
