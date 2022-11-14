@@ -1,6 +1,6 @@
 import groovy.util.logging.Slf4j
-import grin.app.GunApp
-import grin.web.GunServlet
+import grin.app.App
+import grin.web.GServlet
 import io.undertow.Undertow
 import io.undertow.server.HttpHandler
 import io.undertow.server.handlers.encoding.EncodingHandler
@@ -38,14 +38,14 @@ class Application {
      */
     void start() {
         WebSocketDeploymentInfo webSockets = new WebSocketDeploymentInfo()
-        GunApp.instance.websockets.each { webSockets.addEndpoint(it) }
+        App.instance.websockets.each { webSockets.addEndpoint(it) }
         DeploymentInfo deploymentInfo = Servlets.deployment()
                 .setClassLoader(this.class.getClassLoader())
                 .setDefaultMultipartConfig(new MultipartConfigElement(uploadLocation, maxFileSize, maxRequestSize, fileSizeThreshold))
                 .setTempDir(File.createTempDir()) // 这里上传文件的时候，如果 location 空，会用到。但设置了 location，这里就必须设置。
                 .setContextPath(context)
                 .setDeploymentName("gun.war")
-                .addServlets(Servlets.servlet("GunServlet", GunServlet.class).addMapping("/*"))
+                .addServlets(Servlets.servlet("GunServlet", GServlet.class).addMapping("/*"))
                 .addServletContextAttribute(WebSocketDeploymentInfo.ATTRIBUTE_NAME, webSockets)
         DeploymentManager manager = Servlets.defaultContainer().addDeployment(deploymentInfo);
         manager.deploy()
