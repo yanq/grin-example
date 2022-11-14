@@ -44,7 +44,7 @@ environments {
     dev {
         dataSource {
             driverClassName = "org.postgresql.Driver"
-            url = "jdbc:postgresql://localhost:5432/gun_dev"
+            url = "jdbc:postgresql://localhost:5432/grin_dev"
             username = "postgres"
             password = 'pg@local'
             initialSize = 5

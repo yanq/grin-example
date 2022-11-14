@@ -40,7 +40,7 @@ function logs {
 }
 
 #start app
-# windows cmd: java -Dfile.encoding=UTF-8 -classpath build/gun;build/gun/* Application %*
+# windows cmd: java -Dfile.encoding=UTF-8 -classpath build/grin;build/grin/* Application %*
 function start_app {
     log "start app ..."
     export JAVA_OPTS="-Xms100m -Xmx200m"
