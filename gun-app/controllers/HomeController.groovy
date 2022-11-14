@@ -1,4 +1,4 @@
-import gun.web.Controller
+import grin.web.Controller
 
 import java.util.concurrent.atomic.AtomicLong
 

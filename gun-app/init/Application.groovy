@@ -1,6 +1,6 @@
 import groovy.util.logging.Slf4j
-import gun.app.GunApp
-import gun.web.GunServlet
+import grin.app.GunApp
+import grin.web.GunServlet
 import io.undertow.Undertow
 import io.undertow.server.HttpHandler
 import io.undertow.server.handlers.encoding.EncodingHandler

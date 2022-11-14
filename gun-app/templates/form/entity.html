@@ -3,7 +3,7 @@
     <select class="form-control" name="${propName}Id" id="${propName}Id">
         <option value=''>请选择</option>
         <option th:value='\${${propName}.id}' th:each="${propName}:\${${propName}List}"
-                th:selected="\${${gun.generate.ClassUtil.propertyName(entityClass)}.${propName}} ? \${${propName}.id == ${gun.generate.ClassUtil.propertyName(entityClass)}.${propName}.id}"
+                th:selected="\${${grin.generate.ClassUtil.propertyName(entityClass)}.${propName}} ? \${${propName}.id == ${grin.generate.ClassUtil.propertyName(entityClass)}.${propName}.id}"
                 th:text="\${${propName}}">选项 X</option>
     </select>
 </div>

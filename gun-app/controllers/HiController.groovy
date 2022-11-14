@@ -1,5 +1,5 @@
 import groovy.util.logging.Slf4j
-import gun.web.Controller
+import grin.web.Controller
 
 /**
  * hi

@@ -1,4 +1,4 @@
-import gun.web.Interceptor
+import grin.web.Interceptor
 
 class AccessInterceptor extends Interceptor{
 }

@@ -1,7 +1,7 @@
 package ws
 
 import groovy.util.logging.Slf4j
-import gun.web.HttpSessionConfigurator
+import grin.web.HttpSessionConfigurator
 
 import javax.servlet.http.HttpSession
 import javax.websocket.*

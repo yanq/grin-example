@@ -1,6 +1,6 @@
 import groovy.util.logging.Slf4j
-import gun.web.Controller
-import gun.web.LinkUtil
+import grin.web.Controller
+import grin.web.LinkUtil
 
 /**
  * 文件处理

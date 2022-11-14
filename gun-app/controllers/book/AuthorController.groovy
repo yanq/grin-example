@@ -1,7 +1,7 @@
 package book
 
 import groovy.util.logging.Slf4j
-import gun.web.Controller
+import grin.web.Controller
 
 /**
  * Author

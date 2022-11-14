@@ -14,7 +14,7 @@
         <form action="/${propertyName}/update" method="post">
             <input type="hidden" name="id" th:value="\${${propertyName}.id}">
             <%
-            out << gun.generate.FormGenerator.generateForm(entityClass)
+            out << grin.generate.FormGenerator.generateForm(entityClass)
             %>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
