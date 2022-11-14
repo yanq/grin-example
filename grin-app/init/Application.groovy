@@ -45,7 +45,7 @@ class Application {
                 .setTempDir(File.createTempDir()) // 这里上传文件的时候，如果 location 空，会用到。但设置了 location，这里就必须设置。
                 .setContextPath(context)
                 .setDeploymentName("gun.war")
-                .addServlets(Servlets.servlet("GunServlet", GServlet.class).addMapping("/*"))
+                .addServlets(Servlets.servlet("GrinServlet", GServlet.class).addMapping("/*"))
                 .addServletContextAttribute(WebSocketDeploymentInfo.ATTRIBUTE_NAME, webSockets)
         DeploymentManager manager = Servlets.defaultContainer().addDeployment(deploymentInfo);
         manager.deploy()

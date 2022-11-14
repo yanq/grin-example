@@ -56,7 +56,7 @@ task grin(type: JavaExec) {
     setStandardInput(System.in)
     jvmArgs('-Dfile.encoding=UTF-8')
     classpath = sourceSets.main.runtimeClasspath
-    main = 'grin.app.grinMain'
+    main = 'grin.app.Main'
 }
 
 // 部署运行准备，把编译后的文件，放到特定文件夹下

@@ -1,6 +1,6 @@
-# Gun-example
+# Grin-example
 
-A project used Gun.
+A project used Grin.
 
 # Features
 

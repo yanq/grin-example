@@ -61,7 +61,7 @@ environments {
         // dbSql='app.sql'
     }
     prod {
-        name = "Gun Prod"
+        name = "Grin Prod"
     }
 }
 

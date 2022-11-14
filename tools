@@ -44,8 +44,8 @@ function logs {
 function start_app {
     log "start app ..."
     export JAVA_OPTS="-Xms100m -Xmx200m"
-    export GUN_ENV="prod"
-    nohup java $JAVA_OPTS -classpath 'build/gun:build/gun/*' Application > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
+    export GRIN_ENV="prod"
+    nohup java $JAVA_OPTS -classpath 'build/grin:build/grin/*' Application > ../logs/"`date +%Y%m%d%H%M%S`".log 2>&1 &
 }
 
 #update

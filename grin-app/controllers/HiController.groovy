@@ -8,7 +8,7 @@ import grin.web.Controller
 @Slf4j
 class HiController extends Controller {
     def index() {
-        render "你好,Gun !"
+        render "你好,Grin !"
     }
 
     def upload() {
