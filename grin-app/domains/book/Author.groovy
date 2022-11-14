@@ -6,7 +6,7 @@ import grin.datastore.Entity
 /**
  * Author
  */
-@ToString(includeNames = true, excludes = ['errorList'])
+@ToString(includeNames = true, excludes = ['errors'])
 class Author implements Entity<Author> {
     long id //must,long or String
     String name
