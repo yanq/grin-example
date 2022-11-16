@@ -1,27 +1,50 @@
 package book
 
-import groovy.transform.ToString
 import grin.datastore.Entity
+import groovy.transform.ToString
+
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+
+import static grin.datastore.validate.Validators.*
 
 /**
- * book
- */
+ * book*/
 @ToString(includeNames = true, excludes = ['errors'])
 class Book implements Entity<Book> {
-    long id
+    Integer id
     Author author
     String title
-    String type
-    BigDecimal price = 0
-    Date publishAt = new Date()
+    String description
+    int pageCount
+    long wordCount
+    float weight
+    double weightDouble
+    BigDecimal price
+    String forPeople = '青少年'
+    Date publishAt
+    List<String> tags
+    Map<String, Object> metaData
+    LocalDate datePublished
+    LocalTime timePublished
+    LocalDateTime dateCreated
+    LocalDateTime lastUpdated
+    // boolean isDeleted
 
-    static transients = ['config']
-    static mapping = [table: 'book', columns: [name: 'title']]
-    static constraints = {
-        author nullable:true
-        title nullable: false, blank: false, size: 1..100 comment '字符串长度要处于 1 到 100 之间'
-        type inList: ['语文', '数学'],matches:~/.+/
-        price min: 1.0, max: 10.0, range: 2.0..5, validator: { val, obj -> return true } comment '价格介于 1.0 到 10.0 之间'
-    }
+
+    static transients = []
+    static constraints = [title       : [minLength(3), maxLength(5, '太长了'), matches('Y.{2}')],
+                          description : [nullable(), blank(), maxLength(10000)],
+                          pageCount   : [min(1)],
+                          wordCount   : [min(1),
+                                         validator('超过 100 字，太长了') { String fieldName, Object fieldValue, Entity<?> entity -> fieldValue < 100
+                                         }],
+                          weight      : [nullable()],
+                          weightDouble: [nullable()],
+                          price       : [max(5.5), min(1.0)],
+                          forPeople   : [inList(['儿童', '青少年', '成年人'])],
+                          tags        : [nullable()],
+                          metaData    : [nullable()],]
 }
 

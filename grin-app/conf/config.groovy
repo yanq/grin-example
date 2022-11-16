@@ -23,6 +23,26 @@ serverURL = "http://localhost:8080"
 environments {
     dev {
         dataSource {
+            driverClassName = "org.h2.Driver"
+            url = "jdbc:h2:~/h2db/grin-example-test;MODE=PostgreSQL"
+            username = "sa"
+            password = ''
+            initialSize = 5
+            minIdle = 5
+            maxWait = 5000
+            //maxWaitThreadCount = 3 这是干嘛用的？
+            validationQuery = 'select 1'
+            useGlobalDataSourceStat = true
+            removeAbandoned = true
+            removeAbandonedTimeout = 10000
+        }
+        logSql = true
+        // dbCreate = 'update' // create-drop update none
+        // 要执行的 sql 文件，一般用于同步数据库结构，注意可能的副作用。
+        // dbSql='app.sql'
+    }
+    prod {
+        dataSource {
             driverClassName = "org.postgresql.Driver"
             url = "jdbc:postgresql://localhost:5432/grin_dev"
             username = "postgres"
@@ -37,11 +57,9 @@ environments {
             removeAbandonedTimeout = 10000
         }
         logSql = true
+        // dbCreate = 'update' // create-drop update none
         // 要执行的 sql 文件，一般用于同步数据库结构，注意可能的副作用。
         // dbSql='app.sql'
-    }
-    prod {
-        name = "Grin Prod"
     }
 }
 
