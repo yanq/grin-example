@@ -2,7 +2,7 @@
     <label for="${propName}" class="form-label">${propName} select</label>
     <select class="form-control" name="${propName}" id="${propName}">
         <%
-        constraints?.find {it.class.simpleName=='InList'}?.value.each {
+        constraints.inList.value.each {
         out << "<option th:selected=\"\${${grin.generate.ClassUtils.propertyName(entityClass)}.${propName}=='${it}'}\" value='${it}'>${it}</option>"
         }
         %>

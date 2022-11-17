@@ -10,7 +10,8 @@ import java.time.LocalTime
 import static grin.datastore.validate.Validators.*
 
 /**
- * book*/
+ * Book
+ * */
 @ToString(includeNames = true, excludes = ['errors'])
 class Book implements Entity<Book> {
     Integer id
@@ -38,8 +39,7 @@ class Book implements Entity<Book> {
                           description : [nullable(), blank(), maxLength(10000)],
                           pageCount   : [min(1)],
                           wordCount   : [min(1),
-                                         validator('超过 100 字，太长了') { String fieldName, Object fieldValue, Entity<?> entity -> fieldValue < 100
-                                         }],
+                                         validator('超过 100 字，太长了') { String fieldName, Object fieldValue, Entity<?> entity -> fieldValue < 100 }],
                           weight      : [nullable()],
                           weightDouble: [nullable()],
                           price       : [max(5.5), min(1.0)],
