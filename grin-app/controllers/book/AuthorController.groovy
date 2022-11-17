@@ -13,10 +13,10 @@ class AuthorController extends Controller {
         params.limit = params.limit ? params.limit.toInteger() : 10
         params.order = params.order ?: 'id desc'
 
-    def list = Author.list(params)
-    def count = Author.count()
+        def list = Author.list(params)
+        def count = Author.count()
 
-    list.fetch()
+        list.fetch()
 
         render('index', [list: list, count: count])
     }
@@ -24,10 +24,10 @@ class AuthorController extends Controller {
     def show() {
         Author author = Author.get(params.id)
 
-    if (!author) {
-        notFound()
-        return
-    }
+        if (!author) {
+            notFound()
+            return
+        }
 
         author.fetch()
 
@@ -43,16 +43,16 @@ class AuthorController extends Controller {
         Author author = Author.from(params)
         author.validate()
 
-    if (author.errors) {
-        render('create', [author: author])
-    } else {
-        if (author.save()) {
-            redirect("show/${author.id}")
-        } else {
+        if (author.errors) {
             render('create', [author: author])
+        } else {
+            if (author.save()) {
+                redirect("show/${author.id}")
+            } else {
+                render('create', [author: author])
+            }
         }
     }
-}
 
     def edit() {
         Author author = Author.get(params.id)
@@ -76,16 +76,16 @@ class AuthorController extends Controller {
         author.bind(params)
         author.validate()
 
-    if (author.errors) {
-        render('edit', [author: author])
-    } else {
-        if (author.save()) {
-            redirect("show/${author.id}")
-        } else {
+        if (author.errors) {
             render('edit', [author: author])
+        } else {
+            if (author.save()) {
+                redirect("show/${author.id}")
+            } else {
+                render('edit', [author: author])
+            }
         }
     }
-}
 
     def delete() {
         Author author = Author.get(params.id)
