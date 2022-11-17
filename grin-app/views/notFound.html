@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
     <head>
-        <title>404 页面不存在</title>
+        <title>404</title>
     </head>
     <body>
     <div class="text-center m-auto mt-5 pt-5">
-        <h1 class="display-1">页面不存在</h1>
+        <h1 class="display-3" th:text="${message}">页面不存在</h1>
     </div>
     </body>
 </html>
