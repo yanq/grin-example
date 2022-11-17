@@ -1,7 +1,7 @@
 package book
 
-import groovy.util.logging.Slf4j
 import grin.web.Controller
+import groovy.util.logging.Slf4j
 
 /**
  * Book
@@ -36,7 +36,7 @@ class BookController extends Controller {
 
     def create() {
         Book book = Book.from(params)
-        render('create', [book: book,authorList:Author.list()])
+        render('create', [book: book, authorList: Author.list()])
     }
 
     def save() {
@@ -44,12 +44,12 @@ class BookController extends Controller {
         book.validate()
 
         if (book.errors) {
-            render('create', [book: book])
+            render('create', [book: book, authorList: Author.list()])
         } else {
             if (book.save()) {
                 redirect("show/${book.id}")
             } else {
-                render('create', [book: book])
+                render('create', [book: book, authorList: Author.list()])
             }
         }
     }
@@ -62,7 +62,7 @@ class BookController extends Controller {
             return
         }
 
-        render('edit', [book: book])
+        render('edit', [book: book, authorList: Author.list()])
     }
 
     def update() {
@@ -77,12 +77,12 @@ class BookController extends Controller {
         book.validate()
 
         if (book.errors) {
-            render('edit', [book: book])
+            render('edit', [book: book, authorList: Author.list()])
         } else {
             if (book.save()) {
                 redirect("show/${book.id}")
             } else {
-                render('edit', [book: book])
+                render('edit', [book: book, authorList: Author.list()])
             }
         }
     }
