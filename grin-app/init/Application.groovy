@@ -20,25 +20,26 @@ import java.security.KeyStore
  */
 @Slf4j
 class Application {
-    String host = 'localhost'
-    int port = 8080
-    int httpsPort = -1
-    String jksPath = ''
-    String jksPwd = ''
-    String context = '/'
-    String uploadLocation = ''
-    long maxFileSize = -1
-    long maxRequestSize = -1
-    int fileSizeThreshold = 0
-    int ioThreads = 2
-    int workerThreads = 5
-
     /**
      * 启动 Server
      */
     void start() {
+        App app = App.instance
+        String host = 'localhost'
+        int port = app.isDev() ? 8080 : 8090
+        int httpsPort = -1
+        String jksPath = ''
+        String jksPwd = ''
+        String context = '/'
+        String uploadLocation = ''
+        long maxFileSize = -1
+        long maxRequestSize = -1
+        int fileSizeThreshold = 0
+        int ioThreads = 2
+        int workerThreads = 5
+
         WebSocketDeploymentInfo webSockets = new WebSocketDeploymentInfo()
-        App.instance.websockets.each { webSockets.addEndpoint(it) }
+        app.websockets.each { webSockets.addEndpoint(it) }
         DeploymentInfo deploymentInfo = Servlets.deployment()
                 .setClassLoader(this.class.getClassLoader())
                 .setDefaultMultipartConfig(new MultipartConfigElement(uploadLocation, maxFileSize, maxRequestSize, fileSizeThreshold))
