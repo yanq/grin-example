@@ -41,7 +41,7 @@ environments {
     prod {
         dataSource {
             driverClassName = "org.postgresql.Driver"
-            url = "jdbc:postgresql://localhost:5432/grin_dev"
+            url = "jdbc:postgresql://localhost:5432/grin-example-prod"
             username = "postgres"
             password = 'pg@local'
             initialSize = 5
@@ -54,9 +54,9 @@ environments {
             removeAbandonedTimeout = 10000
         }
         logSql = true
-        // dbCreate = 'update' // create-drop update none
+        dbCreate = 'update' // create-drop update none
         // 要执行的 sql 文件，一般用于同步数据库结构，注意可能的副作用。
-        // dbSql='app.sql'
+        dbSql='app.sql'
     }
 }
 

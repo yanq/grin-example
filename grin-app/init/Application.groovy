@@ -81,7 +81,7 @@ class Application {
      * @param args
      */
     public static void main(String[] args) {
-        // GunApp.init(null, 'prod') // 需要配置特定路径和环境的时候启用
+        // App.init(null, 'prod') // 需要配置特定路径和环境的时候启用
         new Application().start()
     }
 }
