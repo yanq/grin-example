@@ -1,7 +1,6 @@
 plugins {
     id 'groovy'
     id 'application'
-    id "com.bertramlabs.asset-pipeline" version "3.4.4"
 }
 
 group 'xyz.itbang'
@@ -63,7 +62,7 @@ task grin(type: JavaExec) {
 // 部署运行准备，把编译后的文件，放到特定文件夹下
 task prepare(type: Copy) {
     group 'grin'
-    dependsOn classes, assetCompile
+    dependsOn classes
     into "$buildDir/grin"
     from sourceSets.main.runtimeClasspath
 }
@@ -73,13 +72,5 @@ task copyLibs(type: Copy) {
     group 'grin'
     from '/Users/yan/projects/grin-dev/grin/build/libs/'
     into "libs"
-}
-
-// assets 配置
-assets {
-    assetsPath = "grin-app/assets"
-    // includes = []
-    // excludes = ['**/*.less'] //Example Exclude GLOB pattern
-    // from '/vendor/lib'
 }
 // --- grin ---
