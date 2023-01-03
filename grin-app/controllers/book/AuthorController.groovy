@@ -1,5 +1,6 @@
 package book
 
+import grin.generate.Generator
 import groovy.util.logging.Slf4j
 import grin.web.Controller
 
@@ -10,15 +11,22 @@ import grin.web.Controller
 @Slf4j
 class AuthorController extends Controller {
     def index() {
-        params.limit = params.limit ? params.limit.toInteger() : 10
-        params.order = params.order ?: 'id desc'
+        int limit = Math.min(Math.max(params.limit ? params.limit.toInteger() : 10, 1), 100)
+        int offset = Math.max(params.offset ? params.offset.toInteger() : 0, 0)
+        String order = params.order ?: 'id desc'
 
-        def list = Author.list(params)
+        def list = Author.list([order: order, limit: limit, offset: offset])
         def count = Author.count()
 
         list.fetch()
 
-        render('index', [list: list, count: count])
+        // 分页参数计算
+        int current = offset / limit + 1
+        int pageCount = ((count % limit == 0) ? (count / limit) : (count / limit) + 1) ?: 1
+        def preLink = "?limit=${limit}&offset=${offset - limit}"
+        def nextLink = "?limit=${limit}&offset=${offset + limit}"
+
+        render('index', [list: list, count: count, pagination: [current: current, pageCount: pageCount, preLink: preLink, nextLink: nextLink]])
     }
 
     def show() {

@@ -10,4 +10,8 @@ class HelloWorldTest extends GroovyTestCase {
                                 new HelloA().sayHi()
                             '''
     }
+
+    void testA(){
+        println(0%3)
+    }
 }

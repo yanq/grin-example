@@ -36,6 +36,13 @@
                </tr>
            </tbody>
         </table>
-        [(\${g.pagination(params.offset,params.limit,count)})]
+
+        <nav aria-label="...">
+            <ul class="pagination justify-content-center mt-3">
+                <li class="page-item" th:classappend="${pagination.current==1} ? 'disabled'"><a class="page-link" th:href="${pagination.preLink}">上一页</a></li>
+                <li class="page-item disabled"><span class="page-link" th:text="|${pagination.current} / ${pagination.pageCount}|">1/1</span></li>
+                <li class="page-item" th:classappend="${pagination.current>=pagination.pageCount} ? 'disabled'"><a class="page-link" th:href="${pagination.nextLink}">下一页</a></li>
+            </ul>
+        </nav>
     </body>
 </html>
