@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html class="h-100" th:fragment="layout (title, content)" xmlns:th="http://www.thymeleaf.org">
+<html th:fragment="layout (head,content)" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <title th:replace="${title}">Layout Title</title>
-    [(${g.assetCss('front.css')})]
-    <link rel="Shortcut Icon" th:href="${g.assetImg('favicon.ico')}">
+    <th:block th:replace="${head}"/>
+    <link rel="stylesheet" href="/files/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/files/assets/stylesheets/application.css">
+    <link rel="icon" href="/files/assets/images/favicon.ico">
 </head>
-<body class="d-flex flex-column h-100">
-<main class="flex-shrink-0 mb-4">
-    <div class="bg-light">
-        <div class="container">
-            <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
-                <a class="d-flex align-items-center mb-3 mb-sm-0 me-sm-auto text-dark text-decoration-none" href="/">
-                    <span class="fs-4">首页</span>
-                </a>
-
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><a aria-current="page" href="/" th:class="${controllerName=='home'} ? 'nav-link active' : 'nav-link'">首页</a></li>
-                    <li class="nav-item"><a aria-current="page" href="/book/index" th:class="${controllerName=='book'} ? 'nav-link active' : 'nav-link'">图书</a></li>
-                    <li class="nav-item"><a aria-current="page" href="/author/index" th:class="${controllerName=='author'} ? 'nav-link active' : 'nav-link'">作者</a></li>
-                </ul>
-            </header>
+<body class="d-flex flex-column min-vh-100">
+<header class="navbar navbar-expand-md navbar-dark bg-primary mb-4" style="padding: 0.75rem 0">
+    <div class="container">
+        <a class="navbar-brand" href="#">Grin Example Project</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                <a href="/" th:class="${controllerName=='home'} ? 'nav-link active' : 'nav-link'">首页</a>
+                <a href="/book/index" th:class="${controllerName=='book'} ? 'nav-link active' : 'nav-link'">图书</a>
+                <a href="/author/index" th:class="${controllerName=='author'} ? 'nav-link active' : 'nav-link'">作者</a>
+            </div>
         </div>
     </div>
-
-    <div class="container" th:include="${content}"></div>
+</header>
+<main class="mb-4">
+    <div class="container" th:insert="${content}"></div>
 </main>
-<footer class="mt-auto bg-light py-4">
-    <div class="container "><span class="text-muted">&copy; 2022</span></div>
+<footer class="mt-auto bg-light py-5">
+    <div class="container small text-secondary">
+        <span>&copy; 2023</span>
+        <a class="float-end" href="#">回页首</a>
+    </div>
 </footer>
-[(${g.assetJs('application.js')})]
+<script src="/files/assets/javascripts/bootstrap.bundle.js"></script>
+<script src="/files/assets/javascripts/application.js"></script>
 </body>
 </html>

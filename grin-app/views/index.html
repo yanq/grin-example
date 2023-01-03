@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layouts/main :: layout(~{::title}, ~{::body})}">
+<html th:replace="~{/layouts/main :: layout(~{::head/content()}, ~{::body/content()})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>首页</title>
 </head>
 <body>
 <section class="jumbotron text-center m-auto">
-    <h1 class="jumbotron-heading">Grin</h1>
+    <h1 class="jumbotron-heading">Grin Example Project</h1>
     <p class="text-danger" th:if="${flash.message}" th:text="${flash.message}"></p>
     <p class="lead text-muted">
-        a groovy web framework.
+        a groovy web framework like Grails.
     </p>
     <p>
-        <img alt="公众号" th:src="${g.assetImg('me/gongzhonghao.jpg')}">
-        <img alt="公众号" th:src="${g.static('gongzhonghao.jpg')}">
+        <img alt="公众号" src="/files/assets/images/me/gongzhonghao.jpg">
     </p>
 </section>
 </body>
