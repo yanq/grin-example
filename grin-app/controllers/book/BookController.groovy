@@ -1,7 +1,7 @@
 package book
 
-import grin.web.Controller
 import groovy.util.logging.Slf4j
+import grin.web.Controller
 
 /**
  * Book
@@ -10,15 +10,22 @@ import groovy.util.logging.Slf4j
 @Slf4j
 class BookController extends Controller {
     def index() {
-        params.limit = params.limit ? params.limit.toInteger() : 10
-        params.order = params.order ?: 'id desc'
+        int limit = Math.min(Math.max(params.limit ? params.limit.toInteger() : 10, 1), 100)
+        int offset = Math.max(params.offset ? params.offset.toInteger() : 0, 0)
+        String order = params.order ?: 'id desc'
 
-        def list = Book.list(params)
+        def list = Book.list([order: order, limit: limit, offset: offset])
         def count = Book.count()
 
         list.fetch()
 
-        render('index', [list: list, count: count])
+        // 分页参数计算
+        int current = offset / limit + 1
+        int pageCount = ((count % limit == 0) ? (count / limit) : (count / limit) + 1) ?: 1
+        def preLink = "?limit=${limit}&offset=${offset - limit}"
+        def nextLink = "?limit=${limit}&offset=${offset + limit}"
+
+        render('index', [list: list, count: count, pagination: [current: current, pageCount: pageCount, preLink: preLink, nextLink: nextLink]])
     }
 
     def show() {
@@ -36,7 +43,7 @@ class BookController extends Controller {
 
     def create() {
         Book book = Book.from(params)
-        render('create', [book: book, authorList: Author.list()])
+        render('create', [book: book])
     }
 
     def save() {
@@ -44,12 +51,12 @@ class BookController extends Controller {
         book.validate()
 
         if (book.errors) {
-            render('create', [book: book, authorList: Author.list()])
+            render('create', [book: book])
         } else {
             if (book.save()) {
                 redirect("show/${book.id}")
             } else {
-                render('create', [book: book, authorList: Author.list()])
+                render('create', [book: book])
             }
         }
     }
@@ -62,7 +69,7 @@ class BookController extends Controller {
             return
         }
 
-        render('edit', [book: book, authorList: Author.list()])
+        render('edit', [book: book])
     }
 
     def update() {
@@ -77,12 +84,12 @@ class BookController extends Controller {
         book.validate()
 
         if (book.errors) {
-            render('edit', [book: book, authorList: Author.list()])
+            render('edit', [book: book])
         } else {
             if (book.save()) {
                 redirect("show/${book.id}")
             } else {
-                render('edit', [book: book, authorList: Author.list()])
+                render('edit', [book: book])
             }
         }
     }

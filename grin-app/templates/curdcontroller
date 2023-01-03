@@ -22,8 +22,8 @@ class ${simpleName}Controller extends Controller {
         // 分页参数计算
         int current = offset / limit + 1
         int pageCount = ((count % limit == 0) ? (count / limit) : (count / limit) + 1) ?: 1
-        def preLink = "?limit=${limit}&offset=${offset - limit}"
-        def nextLink = "?limit=${limit}&offset=${offset + limit}"
+        def preLink = "?limit=\${limit}&offset=\${offset - limit}"
+        def nextLink = "?limit=\${limit}&offset=\${offset + limit}"
 
         render('index', [list: list, count: count, pagination: [current: current, pageCount: pageCount, preLink: preLink, nextLink: nextLink]])
     }

@@ -1,6 +1,5 @@
 package book
 
-import grin.generate.Generator
 import groovy.util.logging.Slf4j
 import grin.web.Controller
 

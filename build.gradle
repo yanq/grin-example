@@ -15,8 +15,8 @@ repositories {
 }
 
 dependencies {
-    // implementation project(':grin')
-    implementation fileTree(dir: 'libs', include: '*.jar')
+    implementation project(':grin')
+    // implementation fileTree(dir: 'libs', include: '*.jar')
     implementation 'org.codehaus.groovy:groovy-all:3.0.13'
     implementation 'io.undertow:undertow-servlet:2.2.21.Final'
     implementation 'io.undertow:undertow-websockets-jsr:2.2.21.Final'
