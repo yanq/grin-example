@@ -1,4 +1,5 @@
 // config
+
 // URL Mapping, key 为 url 表达式，value 为内部资源，controllerName-actionName
 urlMapping = [
         '/'                                   : 'home',
@@ -7,8 +8,6 @@ urlMapping = [
         '/@controllerName/?@actionName?/?@id?': '',
 ]
 
-// 处理错误的控制器类（可选，默认用 Controller）
-// errorClass = Controller.class
 // views
 views.notFound = '/notFound.html'
 views.error = '/error.html'
@@ -36,7 +35,7 @@ environments {
         logSql = true
         dbCreate = 'update' // create-drop update none
         // 要执行的 sql 文件，一般用于同步数据库结构，注意可能的副作用。
-        dbSql='app.sql'
+        dbSql = 'app.sql'
     }
     prod {
         dataSource {
@@ -56,7 +55,7 @@ environments {
         logSql = true
         dbCreate = 'update' // create-drop update none
         // 要执行的 sql 文件，一般用于同步数据库结构，注意可能的副作用。
-        dbSql='app.sql'
+        dbSql = 'app.sql'
     }
 }
 
