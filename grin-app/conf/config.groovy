@@ -34,7 +34,7 @@ environments {
             removeAbandonedTimeout = 10000
         }
         logSql = true
-        // dbCreate = 'update' // create-drop update none
+        dbCreate = 'update' // create-drop update none
         // 要执行的 sql 文件，一般用于同步数据库结构，注意可能的副作用。
         dbSql='app.sql'
     }
