@@ -1,8 +1,10 @@
 import grin.web.Controller
 import grin.web.HttpException
+import groovy.util.logging.Slf4j
 
 import java.util.concurrent.atomic.AtomicLong
 
+@Slf4j
 class HomeController extends Controller {
     static AtomicLong count = new AtomicLong()
 
@@ -19,5 +21,10 @@ class HomeController extends Controller {
 
     def ex() {
         throw new HttpException(500, "异常测试")
+    }
+
+    def param() {
+        log.info("request uri: ${request.getRequestURI()}")
+        json(params)
     }
 }
