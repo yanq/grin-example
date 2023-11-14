@@ -1,7 +1,8 @@
 package book
 
-import groovy.util.logging.Slf4j
 import grin.web.Controller
+import grin.web.HttpException
+import groovy.util.logging.Slf4j
 
 /**
  * Book
@@ -32,7 +33,7 @@ class BookController extends Controller {
         Book book = Book.get(params.id)
 
         if (!book) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 
@@ -65,7 +66,7 @@ class BookController extends Controller {
         Book book = Book.get(params.id)
 
         if (!book) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 
@@ -76,7 +77,7 @@ class BookController extends Controller {
         Book book = Book.get(params.id)
 
         if (!book) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 

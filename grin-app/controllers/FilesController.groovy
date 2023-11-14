@@ -1,6 +1,7 @@
-import groovy.util.logging.Slf4j
 import grin.web.Controller
+import grin.web.HttpException
 import grin.web.LinkUtil
+import groovy.util.logging.Slf4j
 
 /**
  * 文件处理
@@ -64,7 +65,7 @@ class FilesController extends Controller {
      */
     void download() {
         if (!params.id) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
         } else {
             render(new File("${app.config.fileUpload.location}/${params.id}"))
         }
@@ -75,14 +76,14 @@ class FilesController extends Controller {
      */
     void 'static'() {
         if (!params.id) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 
         def f = new File("${app.staticDir}/${params.id}")
         if (f.isDirectory()) f = new File(f, 'index.html')
         if (!f.exists()) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 

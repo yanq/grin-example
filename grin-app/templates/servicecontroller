@@ -1,5 +1,6 @@
 ${ packageName ? "package " + packageName : '' }
 
+import grin.web.HttpException
 import groovy.util.logging.Slf4j
 import grin.web.Controller
 
@@ -26,7 +27,7 @@ class ${simpleName}ServiceController extends Controller {
         ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
         if (!${propertyName}) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 
@@ -64,7 +65,7 @@ class ${simpleName}ServiceController extends Controller {
         ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
         if (!${propertyName}) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 
@@ -75,7 +76,7 @@ class ${simpleName}ServiceController extends Controller {
         ${simpleName} ${propertyName} = ${simpleName}.get(params.id)
 
         if (!${propertyName}) {
-            notFound()
+            throw new HttpException(404, "请求的内容不存在或者已删除")
             return
         }
 
