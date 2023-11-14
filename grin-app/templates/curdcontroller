@@ -1,8 +1,8 @@
 ${ packageName ? "package " + packageName : '' }
 
+import grin.web.Controller
 import grin.web.HttpException
 import groovy.util.logging.Slf4j
-import grin.web.Controller
 
 /**
  * ${simpleName}
