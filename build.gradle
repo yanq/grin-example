@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(':grin')
+    implementation project(':grin') // 如果这里报错，就注释掉，然后取消下一行的注释。这是为了方便测试 grin 而设的。
     // implementation fileTree(dir: 'libs', include: '*.jar')
     implementation 'org.codehaus.groovy:groovy-all:3.0.13'
     implementation 'io.undertow:undertow-servlet:2.2.21.Final'
