@@ -2,6 +2,7 @@ import grin.web.Controller
 import grin.web.HttpException
 import groovy.util.logging.Slf4j
 
+import java.lang.management.ManagementFactory
 import java.util.concurrent.atomic.AtomicLong
 
 @Slf4j
@@ -26,5 +27,26 @@ class HomeController extends Controller {
     def param() {
         log.info("request uri: ${request.getRequestURI()}")
         json(params)
+    }
+
+    def mem() {
+        def mem = ManagementFactory.memoryMXBean
+        def heapUsage = mem.heapMemoryUsage
+        def nonHeapUsage = mem.nonHeapMemoryUsage
+        def r = """MEMORY:
+HEAP STORAGE:
+\tcommitted = $heapUsage.committed
+\tinit = $heapUsage.init
+\tmax = $heapUsage.max
+\tused = $heapUsage.used
+NON-HEAP STORAGE:
+\tcommitted = $nonHeapUsage.committed
+\tinit = $nonHeapUsage.init
+\tmax = $nonHeapUsage.max
+\tused = $nonHeapUsage.used
+"""
+        println(ManagementFactory.getRuntimeMXBean().getName()) // 这个通常要 5s，有些夸张
+        println(r)
+        render(r)
     }
 }
