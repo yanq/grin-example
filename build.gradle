@@ -51,6 +51,7 @@ sourceSets {
 }
 
 // 运行 grin 提供的内部命令
+// 可以通过这种方式传递参数 ./gradlew grin --args "init"
 task grin(type: JavaExec) {
     group 'grin'
     setStandardInput(System.in)
