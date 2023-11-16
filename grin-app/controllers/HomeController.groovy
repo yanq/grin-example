@@ -26,7 +26,21 @@ class HomeController extends Controller {
 
     def param() {
         log.info("request uri: ${request.getRequestURI()}")
+        // json(params) //重复调用会有异常
         json(params)
+    }
+
+    def html() {
+        log.info("request uri: ${request.getRequestURI()}")
+        // html.html{
+        //     header {}
+        //     body {
+        //         p("hhh")
+        //     }
+        // }
+        htmlBuilder.body {
+            p("hhh")
+        }
     }
 
     def mem() {
