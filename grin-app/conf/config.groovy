@@ -4,6 +4,8 @@
 urlMapping = [
         '/'                                   : 'home',
         '/some-pre/hello'                     : 'home-hello',
+        '/pid'        : 'home-param-123',
+        '/favicon.ico': 'files-assets-images/favicon.ico',
         '/files/@actionName?/@id**?'          : 'files',
         '/@controllerName/?@actionName?/?@id?': '',
 ]
@@ -26,7 +28,7 @@ environments {
             initialSize = 5
             minIdle = 5
             maxWait = 5000
-            //maxWaitThreadCount = 3 这是干嘛用的？
+            // maxWaitThreadCount = 3 这是干嘛用的？
             validationQuery = 'select 1'
             useGlobalDataSourceStat = true
             removeAbandoned = true
@@ -46,7 +48,7 @@ environments {
             initialSize = 5
             minIdle = 5
             maxWait = 5000
-            //maxWaitThreadCount = 3 这是干嘛用的？
+            // maxWaitThreadCount = 3 这是干嘛用的？
             validationQuery = 'select 1'
             useGlobalDataSourceStat = true
             removeAbandoned = true
