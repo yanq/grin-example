@@ -7,7 +7,7 @@ import static grin.datastore.validate.Validators.*
  * ${simpleName}
  */
 class ${simpleName} implements Entity< ${simpleName} > {
-    long id //must,long or String
+    long id //can Integer,int,Long,long,String
     String title
     Date publishAt = new Date()
     Date dateCreated = new Date()
