@@ -27,7 +27,7 @@ class HomeController extends Controller {
     def param() {
         log.info("request uri: ${request.getRequestURI()}")
         // json(params) //重复调用会有异常
-        json(params)
+        json([params: params, headers: headers])
     }
 
     def html() {
@@ -59,8 +59,8 @@ NON-HEAP STORAGE:
 \tmax = $nonHeapUsage.max
 \tused = $nonHeapUsage.used
 """
-        println(ManagementFactory.getRuntimeMXBean().getName()) // 这个通常要 5s，有些夸张
         println(r)
+        println(ManagementFactory.getRuntimeMXBean().getName()) // 这个通常要 5s，有些夸张
         render(r)
     }
 }
