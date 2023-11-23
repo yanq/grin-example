@@ -1,10 +1,11 @@
 package ws
 
-import groovy.util.logging.Slf4j
 import grin.web.HttpSessionConfigurator
+import groovy.util.logging.Slf4j
 
 import javax.servlet.http.HttpSession
 import javax.websocket.*
+import javax.websocket.server.HandshakeRequest
 import javax.websocket.server.ServerEndpoint
 
 /**
@@ -17,21 +18,21 @@ import javax.websocket.server.ServerEndpoint
 @ServerEndpoint(value = "/ws", configurator = HttpSessionConfigurator)
 class WebSocketEntry {
     @OnOpen
-    public void onOpen(Session session, EndpointConfig config) {
-        HttpSession httpSession = config.getUserProperties().get(HttpSession.name)
-        session.getUserProperties().put(HttpSession.name, httpSession)
-        log.info("Connected ${session.id} from ${httpSession.id}");
+    void onOpen(Session session, EndpointConfig config) {
+        HandshakeRequest request = config.getUserProperties().get(HandshakeRequest.name)
+        session.getUserProperties().put(HttpSession.name, request.getHttpSession())
+        log.info("Connected ${session.id} from ${request.getHttpSession().id}")
     }
 
     @OnMessage
-    public String onMessage(String message, Session session) {
+    String onMessage(String message, Session session) {
         HttpSession httpSession = session.getUserProperties().get(HttpSession.name)
         log.info("收到 ${message} and count ${httpSession.getAttribute('count')}")
         return "ok"
     }
 
     @OnClose
-    public void onClose(Session session, CloseReason closeReason) {
-        log.info(String.format("Session %s closed because of %s", session.getId(), closeReason));
+    void onClose(Session session, CloseReason closeReason) {
+        log.info(String.format("Session %s closed because of %s", session.getId(), closeReason))
     }
 }

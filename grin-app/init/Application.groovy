@@ -1,6 +1,6 @@
-import groovy.util.logging.Slf4j
 import grin.app.App
 import grin.web.GServlet
+import groovy.util.logging.Slf4j
 import io.undertow.Undertow
 import io.undertow.server.HttpHandler
 import io.undertow.server.handlers.encoding.EncodingHandler
@@ -38,6 +38,9 @@ class Application {
         int ioThreads = 2
         int workerThreads = 5
 
+        app.initializeDB()
+        app.initializeWeb()
+
         WebSocketDeploymentInfo webSockets = new WebSocketDeploymentInfo()
         app.websockets.each { webSockets.addEndpoint(it) }
         DeploymentInfo deploymentInfo = Servlets.deployment()
@@ -48,7 +51,7 @@ class Application {
                 .setDeploymentName("grin.war")
                 .addServlets(Servlets.servlet("GrinServlet", GServlet.class).addMapping("/*"))
                 .addServletContextAttribute(WebSocketDeploymentInfo.ATTRIBUTE_NAME, webSockets)
-        DeploymentManager manager = Servlets.defaultContainer().addDeployment(deploymentInfo);
+        DeploymentManager manager = Servlets.defaultContainer().addDeployment(deploymentInfo)
         manager.deploy()
         HttpHandler handler = manager.start()
         handler = new EncodingHandler.Builder().build([:]).wrap(handler)
@@ -69,11 +72,11 @@ class Application {
         KeyStore serverKeyStore = KeyStore.getInstance("JKS")
         serverKeyStore.load(new FileInputStream(jks), pwd.toCharArray())
         KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509")
-        kmf.init(serverKeyStore, pwd.toCharArray());// 加载密钥储存器
-        TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
+        kmf.init(serverKeyStore, pwd.toCharArray())// 加载密钥储存器
+        TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509")
         tmf.init(serverKeyStore)
-        SSLContext sslContext = SSLContext.getInstance("TLS");
-        sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+        SSLContext sslContext = SSLContext.getInstance("TLS")
+        sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null)
         return sslContext
     }
 
@@ -81,7 +84,7 @@ class Application {
      * 启动应用
      * @param args
      */
-    public static void main(String[] args) {
+    static void main(String[] args) {
         // App.init(null, 'prod') // 需要配置特定路径和环境的时候启用
         new Application().start()
     }
